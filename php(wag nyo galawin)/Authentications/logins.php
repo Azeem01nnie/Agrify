@@ -1,28 +1,32 @@
 <?php
 session_start();
-require_once '../Config/database.php';
-echo realpath('../Config/database.php');
+include("../Config/database.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+?>
 
-    if (empty($username) || empty($password)){
-        die("Username and Password are required.");
-    }
-}
 
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-$stmt->execute([':username' => $username]);
-$user = $stmt->fetch();
-
-if($user && password_verify($password, $user['password'])){
-    $_SESSION['user_id'] = $user['user_id'];
-    $_SESSION['username'] = $user['username'];
-    $_SESSION['role'] = $user['role'];
-
-    header("Location ../dashboard.html");
-    exit();
-}else{
-    die("Invalid username or password");
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <div style="text-align:center; padding:15%;">
+      <p  style="font-size:50px; font-weight:bold;">
+       Log in Successful you may now go to the dashboard <?php 
+       if(isset($_SESSION['email'])){
+        $email=$_SESSION['email'];
+        $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
+        while($row=mysqli_fetch_array($query)){
+            echo $row['firstName'].' '.$row['lastName'];
+        }
+       }
+       ?>
+       :)
+      </p>
+      <a href="dashboard.php">Dashboard</a>
+    </div>
+</body>
+</html>
