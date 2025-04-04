@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Dashboard</title>
-    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="../Authentications/dashboard-style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -29,6 +29,7 @@
             <header>
                 <h1>Home <span id="weather">Loading weather...</span></h1>
                 <a href="#" class="addcage"><button>+ Add Cage</button></a>
+                <a href="login.php">Logout</a>
             </header>
 
             <div id="cages" class="cages">

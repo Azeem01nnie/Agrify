@@ -1,5 +1,5 @@
 body {
-    background: url('/login/bg.png') no-repeat center center/cover;
+    background: url('../Authentications/bg.png') no-repeat center center/cover;
    
     font-family: Arial, sans-serif;
     display: flex;
