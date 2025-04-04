@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #6B8E5E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: auto; /* Allows scrolling when zoomed in */
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px; 
+    position: relative;
+    min-height: 90vh; 
+    overflow: auto; 
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.back-arrow {
+    text-decoration: none;
+    font-size: 20px;
+   
+    top: 20px;
+    left: 20px;
+    color: black;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+span {
+    font-size: 12px;
+    color: gray;
+}
+#name{
+    width: 70%;
+}
+#address{
+    width:70%;
+}
+#dob{
+    width: 15%;
+}
+#contact{
+    width: 30%;
+}
+#username{
+    width: 70%;
+}
+#password{
+    width: 40%;
+}
+#repassword{
+    width: 40%;
+}
+input {
+   
+    padding: 10px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #45a049;
+}
+
+.hint {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+        min-height: auto;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .back-arrow {
+        margin-top: 20px;
+        font-size: 18px;
+        top: 15px;
+        left: 15px;
+    }
+}
+.container2 {
+    background: white;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 2000px;
+    height: 100%;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.terms-box {
+    border: 1px solid #4CAF50;
+    padding: 15px;
+    height: 120px;
+    overflow-y: scroll;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.create-account-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.create-account-btn:disabled {
+    background: #ddd;
+    color: gray;
+    cursor: not-allowed;
+}
+
+.create-account-btn.enabled {
+    background: #4CAF50;
+    color: white;
+}
+
+.create-account-btn.enabled:hover {
+    background: #45a049;
+}
+.warning {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}

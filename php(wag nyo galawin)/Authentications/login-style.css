@@ -19,12 +19,11 @@ body::before {
     z-index: -1;
   }
 .login-container {
-   
-    padding: 20px;
     border-radius: 10px;
     text-align: center;
     color: white;
     width: 300px;
+    margin-bottom: 50px;
 }
 input {
     width: 90%;
@@ -55,4 +54,8 @@ label{
     font-size: 20px;
     font-weight: bold !important;
     color: #5a7d3d !important;
+}
+a{
+    color: white;
+    font-size: 18px;
 }
