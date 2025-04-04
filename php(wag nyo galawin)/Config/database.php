@@ -14,7 +14,7 @@ class Database{
         $dsn = 'mysql:host='.$this->host.';dbname='.$this->dbname;
         $options = array(
             PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_EXCEPTION => PDO::ERRMODE_EXCEPTION
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
         try {
             $this->dbh = new PDO($dsn, $this->username, $this->password, $options);
@@ -32,7 +32,7 @@ class Database{
         if(is_null($type)){
             switch(true){
                 case is_int($value):
-                    $type == PDO::PARAM_TRUE;
+                    $type == PDO::PARAM_INT;
                     break;
                 case is_bool($value):
                     $type == PDO::PARAM_BOOL;
