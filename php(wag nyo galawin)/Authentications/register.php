@@ -1,13 +1,19 @@
-<?php 
-    include_once 'header.php';
-    include_once './helpers/session_helper.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./addanimals/add-style.css">
+</head>
+<body>
 
+    <?php 
+        include_once '../Config/database.php';
+    ?>
     <h1 class="header">Please Signup</h1>
 
-    <?php flash('register') ?>
-
-    <form method="post" action="./controllers/Users.php">
+    <form method="post" action="./Authentications/register.php">
         <input type="hidden" name="type" value="register">
         <input type="text" name="usersName" 
         placeholder="Full name...">
@@ -21,7 +27,6 @@
         placeholder="Repeat password">
         <button type="submit" name="submit">Sign Up</button>
     </form>
-    
-<?php 
-    include_once 'footer.php'
-?>
+
+</body>
+</html>
