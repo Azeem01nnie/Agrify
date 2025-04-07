@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agrify Dashboard</title>
+  <link rel="stylesheet" href="add-style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>AGRIFY</h2>
+      <div class="profile">
+        <img src="profile.png" alt="Profile" />
+        <p>Azeem Abdu <span>Admin</span></p>
+      </div>
+      <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#">Livestock Details</a>
+        <a href="#">Cages</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header>
+        <h1>Cages</h1>
+        <button class="add-cage-btn">+ Add Cage</button>
+      </header>
+      <hr>
+
+      <div class="filter-bar">
+        <label for="filter">Filter by:</label>
+        <select id="filter">
+          <option>Newest</option>
+          <option>Oldest</option>
+          <option>A-Z</option>
+          <option>Z-A</option>
+          <option>Favorites</option>
+        </select>
+      </div>
+
+      <div class="cage-grid">
+        
+        <div class="cage-card add-cage"><span>+</span><p>add cage</p></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="add-script.js"></script>
+</body>
+</html>
