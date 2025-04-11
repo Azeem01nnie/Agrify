@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="login-btn">LOGIN</button>
         </form>
         <br>
-        <a href="/register/regform.html">Don’t have an account? Create one!</a>
+        <a href="/agrify/register/regform.php">Don’t have an account? Create one!</a>
     </div>
 </body>
 </html>
