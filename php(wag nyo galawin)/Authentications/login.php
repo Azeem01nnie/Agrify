@@ -1,19 +1,16 @@
 <?php
-ob_start();
 session_start();
 require_once '../Config/database.php';
 
-$error_message = "";
+$error = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-    if (empty($username) || empty($password)){
-        $error_message = "Username and Password are required.";
-    } else {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->execute([':username' => $username]);
+    if (!empty($username) && !empty($password)) {
+        $stmt = $pdo->prepare("SELECT user_id, username, password, role FROM users WHERE username = :username LIMIT 1");
+        $stmt->execute(['username' => $username]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
@@ -21,39 +18,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
+            
             header("Location: ../Authentications/dashboard.php");
-            exit();
+            exit;
         } else {
-            $error_message = "Invalid username or password.";
+            $error = 'Invalid username or password.';
         }
+    } else {
+        $error = 'Please enter both username and password.';
     }
 }
-ob_end_flush();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Neo+ Login</title>
-    <link rel="stylesheet" href="../Authentications/login-style.css">
+    <link rel="stylesheet" href="login-style.css">
 </head>
 <body>
     <div class="login-container">
         <h2>AGRIFY</h2>
-
-        <?php if (!empty($error_message)): ?>
-            <div class="error-message"><?php echo $error_message; ?></div>
+        <?php if ($error): ?>
+            <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
-
-        <form action="register.php" method="POST">
+        <form method="POST" action="">
             <label>USERNAME</label>
             <input type="text" name="username" required>
             <label>PASSWORD</label>
             <input type="password" name="password" required>
-            <button type="submit" class="login-btn" name="signUp">LOGIN</button>
+            <button type="submit" class="login-btn">LOGIN</button>
         </form>
+        <br>
+        <a href="/agrify/register/regform.php">Don’t have an account? Create one!</a>
     </div>
 </body>
 </html>

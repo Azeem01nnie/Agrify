@@ -1,48 +1,32 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Authentications/register.css">
+</head>
+<body>
 
-include '../Config/database.php';
+    <?php 
+        include_once '../Config/database.php';
+    ?>
+    <h1 class="header">Please Signup</h1>
 
-if(isset($_POST['signUp'])){
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $password=md5($password);
+    <form method="post" action="./Authentications/register.php">
+        <input type="hidden" name="type" value="register">
+        <input type="text" name="usersName" 
+        placeholder="Full name...">
+        <input type="text" name="usersEmail" 
+        placeholder="Email...">
+        <input type="text" name="usersUid" 
+        placeholder="Username...">
+        <input type="password" name="usersPwd" 
+        placeholder="Password...">
+        <input type="password" name="pwdRepeat" 
+        placeholder="Repeat password">
+        <button type="submit" name="submit">Sign Up</button>
+    </form>
 
-     $checkUsername="SELECT * From users where username='$username'";
-     $result=$pdo->query($checkUsername);
-     if($result->rowCount()>0){
-        echo "Username Already Exists !";
-     }
-     else{
-        $insertQuery="INSERT INTO users(username,password)
-                       VALUES ('$username','$password')";
-            if($pdo->query($insertQuery)==TRUE){
-                header("location: index.php");
-            }
-            else{
-                echo "Error:".$pdo->error;
-            }
-     }
-   
-
-}
-
-if(isset($_POST['signIn'])){
-   $username=$_POST['username'];
-   $password=$_POST['password'];
-   $password=md5($password) ;
-   
-   $sql="SELECT * FROM users WHERE username='$username' and password='$password'";
-   $result=$pdo->query($sql);
-   if($result->rowCount()> 0){
-    session_start();
-    $row=$result->fetch_assoc();
-    $_SESSION['username']=$row['username'];
-    header("Location: homepage.php");
-    exit();
-   }
-   else{
-    echo "Not Found, Incorrect username or Password";
-   }
-
-}
-?>
+</body>
+</html>
