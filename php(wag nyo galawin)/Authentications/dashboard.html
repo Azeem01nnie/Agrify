@@ -24,7 +24,7 @@
             </nav>
         </aside>
 
-    
+    <div class="main">
         <main class="content">
             <header>
                 <h1>Home <span id="weather">Loading weather...</span></h1>
@@ -63,9 +63,20 @@
             <section class="financial">
                 <h2>Financial Statistics</h2>
                 <div class="flex">
-                <div class="circle">
-                    <div class="percentage">78%</div>
-                </div>
+                    <div class="circular-progress-78">
+                        <svg class="progress-ring" width="250" height="250">
+                          <circle class="progress-ring__background" cx="135" cy="105" r="100" />
+                          <circle class="progress-ring__circle" cx="135" cy="105" r="100" />
+                        </svg>
+                        <div class="progress-text">
+                          <div class="label">Achieved</div>
+                          <div id="percentage">78%</div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      
                 <div class="expect">
                 <p>Expected Profit: <strong>700,000.00</strong></p>
                 <p>Current Profit: <strong>150,000.00</strong></p>
@@ -82,6 +93,8 @@
             </section>
         </main>
     </div>
+    </div>
+
     <script src="dashboard-script.js"></script>
 </body>
 </html>

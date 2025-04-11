@@ -5,12 +5,18 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+body{
+    background-color: #45a049;
+}
 
 
 .dashboard {
     display: flex;
-    height: 100vh;
+    height: 1061px;
     background: #f4f4f4;
+    width: 1400px;
+    margin-top: 10px;
+    margin-left: 00px;
 }
 
 
@@ -230,3 +236,67 @@ header span {
     color:black;
     font-size: 20px;
 }
+.circular-progress-78 {
+    position: relative;
+    width: 200px; 
+  }
+  
+ 
+  .circular-progress-78 .progress-ring {
+    transform: rotate(-90deg);
+  }
+  
+
+  .circular-progress-78 .progress-ring__background,
+  .circular-progress-78 .progress-ring__circle {
+    fill: transparent;
+    stroke-width: 12;
+    
+
+  }
+  
+
+  .circular-progress-78 .progress-ring__background {
+    stroke: #4c7c4c;
+  }
+  
+
+  .circular-progress-78 .progress-ring__circle {
+   
+    stroke:  #e6e6e6;
+    stroke-linecap: round;
+    stroke-dasharray: 691.15;
+    stroke-dashoffset: 691.15;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  /* Centered text inside the progress circle */
+  .circular-progress-78 .progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+  }
+  
+  /* Top label text */
+  .circular-progress-78 .label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4c7c4c;
+    margin-bottom: 4px;
+  }
+  
+  /* Percentage number */
+  .circular-progress-78 #percentage {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  
