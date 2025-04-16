@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cage Details</title>
-    <link rel="stylesheet" href="details-style.css">
-    <script src="add-script2.js"></script>
+    <link rel="stylesheet" href="details-style.css" />
+    <script src="add-script2.js" defer></script>
 </head>
 <body>
     <div class="details-container">
         <div class="flex">
-        <button class="back-btn" onclick="goBack()">←</button>
-        
-    </div>
+            <button class="back-btn" onclick="goBack()">←</button>
+        </div>
+
         <hr>
 
-        <img id="cage-img" src="" alt="Cage Image">
+        <img id="cage-img" src="" alt="Cage Image" />
         <h1 id="cage-title"></h1>
-        <p>Cage description</p>
+        <p class="label">Cage description</p>
         <div class="description-container">
-            <p id="cage-description" contenteditable="true"></p>
-            <button id="save-description">Save</button>
+            <p id="cage-description"></p>
         </div>
-       
-       
     </div>
-    
+
     <div class="livestock-container">
         <div class="button-container">
             <button class="add-animal-btn">+ Add Animal</button>
@@ -42,39 +39,35 @@
                 </tr>
             </thead>
             <tbody class="livestock-body">
+                <!-- Animal rows will be dynamically added here -->
             </tbody>
         </table>
     </div>
 
-   
     <div class="popup-container">
         <div class="popup-form">
             <h2>Add Animal</h2>
-            <div class="lab">
-            <label>Animal Type:</label>
-            <select id="animalType">
-                <option value="Goat">Goat</option>
-                <option value="Cow">Cow</option>
-                <option value="Chicken">Chicken</option>
-                <option value="Horse">Horse</option>
-                <option value="Other">Other</option>
-            </select>
-             
-            <br>
 
-            <input type="text" id="otherType" placeholder="Specify if Other" style="display:none;">
-        </div>
+            <div class="lab">
+                <label>Animal Type:</label>
+                <select id="animalType">
+                    <option value="Goat">Goat</option>
+                    <option value="Cow">Cow</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Horse">Horse</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="otherType" placeholder="Specify if Other" style="display:none;" />
+            </div>
+
             <div class="lab2">
-            <label>Date of Birth:</label>
-            <input type="date" id="dob">
-        </div>
+                <label>Date of Birth:</label>
+                <input type="date" id="dob" />
+            </div>
 
             <button id="saveAnimal">Add Animal</button>
             <button class="close-btn">Close</button>
         </div>
     </div>
-
-
-    
 </body>
 </html>

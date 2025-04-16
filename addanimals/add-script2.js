@@ -11,42 +11,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let animalCounter = 1; // Start from 1 and increment
 
-    // Cage Details
+    // Cage Details from URL
     const params = new URLSearchParams(window.location.search);
     const cageName = params.get("name") || "Unknown Cage";
     const cageImg = params.get("img") || "default-cage.jpg";
-    const cageDesc = params.get("desc") || "Click to edit description...";
+    const cageDesc = params.get("desc") || "No description provided.";
 
-    const titleElement = document.getElementById("cage-title");
-    const imgElement = document.getElementById("cage-img");
-    const descElement = document.getElementById("cage-description");
-    const saveBtn = document.getElementById("save-description");
+    // Populate Cage Details
+    document.getElementById("cage-title").innerText = decodeURIComponent(cageName);
+    document.getElementById("cage-img").src = decodeURIComponent(cageImg);
+    document.getElementById("cage-description").innerText =
+        localStorage.getItem(`cage-desc-${cageName}`) || decodeURIComponent(cageDesc);
 
-    // Load Cage Details
-    titleElement.innerText = decodeURIComponent(cageName);
-    imgElement.src = decodeURIComponent(cageImg);
-    descElement.innerText = localStorage.getItem(`cage-desc-${cageName}`) || decodeURIComponent(cageDesc);
-
-    // Toggle Popup Visibility
+    // Popup handlers
     const togglePopup = () => popupContainer.classList.toggle("visible");
-
     addAnimalBtn.addEventListener("click", togglePopup);
     closeBtn.addEventListener("click", togglePopup);
 
-    // Show Input if "Other" is Selected
+    // Toggle visibility for 'Other' animal type input
     animalTypeSelect.addEventListener("change", () => {
         otherTypeInput.style.display = animalTypeSelect.value === "Other" ? "block" : "none";
     });
 
-    // Add Animal to Table
+    // Add new animal row
     saveAnimalBtn.addEventListener("click", () => {
-        let animalType = animalTypeSelect.value === "Other"
-            ? otherTypeInput.value || "Unknown"
-            : animalTypeSelect.value;
+        const animalType =
+            animalTypeSelect.value === "Other"
+                ? otherTypeInput.value || "Unknown"
+                : animalTypeSelect.value;
 
         const dob = dobInput.value || "N/A";
 
-        // Append Row
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${animalCounter}</td>
@@ -58,16 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         tbody.appendChild(row);
 
-        animalCounter++; // Increment for next ID
-        togglePopup();   // Close popup
+        animalCounter++;
+        togglePopup();
     });
 
-    // Save Cage Description
-    saveBtn.addEventListener("click", () => {
-        localStorage.setItem(`cage-desc-${cageName}`, descElement.innerText);
-        alert("Description saved!");
-    });
-
-    // Go Back Function
+    // Back button logic
     window.goBack = () => window.history.back();
 });

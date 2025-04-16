@@ -3,11 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const addCageBtn = document.querySelector(".add-cage");
     const filterSelect = document.getElementById("filter");
 
+    const modal = document.getElementById("cageModal");
+    const closeBtn = document.querySelector(".close-btn");
+    const saveBtn = document.getElementById("saveCageBtn");
+
     const defaultImg = "/addanimals/image.png";
 
     let cages = [];
 
-    function createCageCard(name, imgSrc) {
+    function createCageCard(name, imgSrc, description) {
         const cageCard = document.createElement("div");
         cageCard.classList.add("cage-card");
 
@@ -24,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         cageCard.addEventListener("click", function () {
             const encodedName = encodeURIComponent(name);
             const encodedImg = encodeURIComponent(img.src);
-            window.location.href = `cage-details.html?name=${encodedName}&img=${encodedImg}`;
+            const encodedDesc = encodeURIComponent(description || "");
+            window.location.href = `cage-details.html?name=${encodedName}&img=${encodedImg}&desc=${encodedDesc}`;
         });
 
         return cageCard;
@@ -35,22 +40,66 @@ document.addEventListener("DOMContentLoaded", function () {
         existingCards.forEach(card => card.remove());
 
         cages.forEach(cage => {
-            const card = createCageCard(cage.name, cage.imgSrc);
+            const card = createCageCard(cage.name, cage.imgSrc, cage.description);
             cageGrid.insertBefore(card, addCageBtn);
         });
     }
 
+    // Open modal
     addCageBtn.addEventListener("click", function () {
-        const cageName = prompt("Enter the name of the cage:");
-        if (!cageName) return;
-
-        let imgUrl = prompt("Enter image URL (or leave blank for default):");
-        if (!imgUrl) imgUrl = defaultImg;
-
-        cages.push({ name: cageName, imgSrc: imgUrl, createdAt: Date.now() });
-        filterSelect.dispatchEvent(new Event("change")); // apply current filter after adding
+        modal.style.display = "flex";
     });
 
+    // Close modal
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Save cage
+    saveBtn.addEventListener("click", function () {
+        const cageNameInput = document.getElementById("cageName");
+        const cageDescInput = document.getElementById("description");
+        const cageImgInput = document.getElementById("thumbnail");
+
+        const name = cageNameInput.value.trim();
+        const description = cageDescInput.value.trim();
+        const file = cageImgInput.files[0];
+
+        if (!name) {
+            alert("Cage name is required.");
+            return;
+        }
+
+        const addCageToList = (imgSrc) => {
+            const cage = {
+                name,
+                imgSrc: imgSrc || defaultImg,
+                description,
+                createdAt: Date.now()
+            };
+
+            cages.push(cage);
+            filterSelect.dispatchEvent(new Event("change"));
+            modal.style.display = "none";
+
+            // Reset form
+            cageNameInput.value = "";
+            cageDescInput.value = "";
+            cageImgInput.value = "";
+        };
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                addCageToList(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            addCageToList(defaultImg);
+        }
+    });
+
+    // Filtering logic
     filterSelect.addEventListener("change", function () {
         const val = filterSelect.value;
 
@@ -69,6 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCages();
     });
 
-    // Apply default filter (A-Z) on page load
+    // Default sort on load
     filterSelect.dispatchEvent(new Event("change"));
 });
