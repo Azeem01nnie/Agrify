@@ -1,17 +1,95 @@
+<?php
+session_start();
+require_once '../php/Config/database.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $address = trim($_POST['address'] ?? '');
+    $dob = $_POST['dob'] ?? '';
+    $contact = $_POST['contact'] ?? '';
+    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $repassword = $_POST['repassword'] ?? '';
+    $agreeTerms = isset($_POST['agreeTerms']);
+
+    if (!empty($name) && !empty($address) && !empty($dob) && !empty($contact) &&
+        !empty($username) && !empty($email) && !empty($password) && !empty($repassword)) {
+
+        if ($password !== $repassword) {
+            $error = 'Passwords do not match.';
+        } elseif (!$agreeTerms) {
+            $error = 'You must agree to the Terms and Conditions.';
+        } else {
+            $stmt = $pdo->prepare("SELECT user_id FROM users WHERE username = :username OR email = :email LIMIT 1");
+            $stmt->execute(['username' => $username, 'email' => $email]);
+            $existingUser = $stmt->fetch();
+
+            if ($existingUser) {
+                $error = 'Username or email already taken.';
+            } else {
+                try {
+                    $pdo->beginTransaction();
+
+                    // Insert into users table
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role, created_at)
+                                           VALUES (:username, :email, :password, 'farmer', NOW())");
+                    $stmt->execute([
+                        'username' => $username,
+                        'email' => $email,
+                        'password' => $hashedPassword
+                    ]);
+
+                    $userId = $pdo->lastInsertId();
+
+                    // Insert into user_profiles table
+                    $stmt = $pdo->prepare("INSERT INTO user_profiles (user_id, name, address, dob, contact)
+                                           VALUES (:user_id, :name, :address, :dob, :contact)");
+                    $stmt->execute([
+                        'user_id' => $userId,
+                        'name' => $name,
+                        'address' => $address,
+                        'dob' => $dob,
+                        'contact' => $contact
+                    ]);
+
+                    $pdo->commit();
+
+                    header("Location:/agrify/php/Authentications/login.php");
+                    exit;
+                } catch (PDOException $e) {
+                    $pdo->rollBack();
+                    $error = 'An error occurred: ' . $e->getMessage();
+                }
+            }
+        }
+    } else {
+        $error = 'Please fill in all fields.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGRIFY Registration</title>
-    <link rel="stylesheet" href="register-style.css">
+    <link rel="stylesheet" href="register-style.css"> 
 </head>
 <body>
     <div class="container">
         <h1>Welcome to AGRIFY</h1>
-        <a href="/Authentications/login.php" class="back-arrow">&larr;</a>
+        <a href="/agrify/php/Authentications/login.php" class="back-arrow">&larr;</a>
 
-        <form id="registrationForm">
+        <?php if ($error): ?>
+            <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+
+        <form id="registrationForm" method="POST" action="">
             <label for="name">Name <span>(Last name, First name, M.I.)</span></label>
             <input type="text" id="name" name="name" required>
 
@@ -27,15 +105,24 @@
             <label for="username">Username <span class="hint">(make it unique)</span></label>
             <input type="text" id="username" name="username" required>
 
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
             <label for="password">Password <span class="hint">(make it unique)</span></label>
             <input type="password" id="password" name="password" required>
 
             <label for="repassword">Re-type Password <span class="hint">(make it unique)</span></label>
             <input type="password" id="repassword" name="repassword" required>
             <p id="password-warning" class="warning hidden">Passwords do not match!</p>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="agreeCheckbox" name="agreeTerms" class="agree-checkbox">
+                <label for="agreeCheckbox">Agree to the Terms and Conditions</label>
+            </div>
+
+            <button type="submit" class="create-account-btn" id="createAccountBtn" <?php echo isset($error) ? 'disabled' : ''; ?>>Create Account</button>
         </form>
-         
-        
+
         <div class="container2">
             <h2>Terms and Condition</h2>
             <div class="terms-box">
@@ -113,16 +200,11 @@
                     <li>Azeem@gmail.com</li>
                    <li>091111111</li>
                     <li>baliwasan</li>
-                    
                     </p>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="agreeCheckbox" class="agree-checkbox">
-                <label for="agreeCheckbox">Agree to the Terms and Condition</label>
-            </div>
-            <button class="create-account-btn" id="createAccountBtn" disabled>Create Account</button>
         </div>
     </div>
+
     <script src="register-script.js"></script>
 </body>
 </html>
