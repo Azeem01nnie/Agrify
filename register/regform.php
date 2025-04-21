@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Welcome to AGRIFY</h1>
-        <a href="/login/login.html" class="back-arrow">&larr;</a>
+        <a href="/Authentications/login.php" class="back-arrow">&larr;</a>
 
         <form id="registrationForm">
             <label for="name">Name <span>(Last name, First name, M.I.)</span></label>
