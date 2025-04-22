@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$db   = 'agrify';
+$db   = 'PersonalProject';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
