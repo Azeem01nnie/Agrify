@@ -1,3 +1,10 @@
+<?php 
+session_start();
+require_once '../php/Config/database.php';
+file_put_contents("debug.log", "POST: " . print_r($_POST, true) . "\nFILES: " . print_r($_FILES, true), FILE_APPEND);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +20,16 @@
       <h2>AGRIFY</h2>
       <div class="profile">
         <img src="profile.png" alt="Profile" />
-        <p>Azeem Abdu <span>Admin</span></p>
+        <p><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?>
+           <span>Admin</span></p>
       </div>
       <nav>
-        <a href="#" class="active">Home</a>
+        <a href="/agrify/php/Authentications/dashboard.php" class="active">Home</a>
         <a href="#">Livestock Details</a>
         <a href="#">Cages</a>
         <a href="#">Settings</a>
@@ -44,11 +57,12 @@
 
       <div class="cage-grid">
         
-        <div class="cage-card add-cage"><span>+</span><p>add cage</p></div>
+        <div class="cage-card add-cage"><span>+</span><p>Add Cage</p></div>
       </div>
     </div>
   </div>
 </div>
+
 <div id="cageModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -56,18 +70,18 @@
 
     <div class="form-group">
       <label for="cageName">Cage name</label>
-      <input type="text" id="cageName" required />
+      <input type="text" id="cageName" name="cage_name" required />
       <span class="required-note">required</span>
     </div>
 
     <div class="form-group">
       <label for="thumbnail">Cage thumbnail (Optional)</label>
-      <input type="file" id="thumbnail" />
+      <input type="file" id="thumbnail" name="cage_image" />
     </div>
 
     <div class="form-group">
       <label for="description">Cage description (Optional)</label>
-      <textarea id="description" rows="4"></textarea>
+      <textarea id="description" rows="4" name="cage_desc"></textarea>
     </div>
 
     <button id="saveCageBtn" class="create-button">Create</button>

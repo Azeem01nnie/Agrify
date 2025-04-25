@@ -35,13 +35,41 @@ document.addEventListener("DOMContentLoaded", function () {
         return cageCard;
     }
 
-    function renderCages() {
-        const existingCards = cageGrid.querySelectorAll(".cage-card:not(.add-cage)");
-        existingCards.forEach(card => card.remove());
+    function fetchAndRenderCages() {
+        fetch("/agrify/php/Authentications/get_cages.php")
+            .then(response => response.json())
+            .then(data => {
+                cages = data.map(cage => ({
+                    ...cage,
+                    createdAt: Date.now()  // temporary for sorting
+                }));
+                filterSelect.dispatchEvent(new Event("change"));
+            })
+            .catch(error => {
+                console.error("Failed to load cages:", error);
+            });
 
+    }
+
+    function renderCages() {
+        const cageGrid = document.querySelector('.cage-grid');
+        
+        // Clear existing cage cards except the "Add Cage" button
+        cageGrid.innerHTML = `
+            <div class="cage-card add-cage"><span>+</span><p>Add Cage</p></div>
+        `;
+    
         cages.forEach(cage => {
-            const card = createCageCard(cage.name, cage.imgSrc, cage.description);
-            cageGrid.insertBefore(card, addCageBtn);
+            const card = document.createElement('div');
+            card.className = 'cage-card';
+    
+            card.innerHTML = `
+                <img src="${cage.image_path || '/agrify/php/uploads/default_image.png'}" alt="Cage Image">
+                <h3>${cage.cage_name}</h3>
+                <p>${cage.cage_desc || ''}</p>
+            `;
+    
+            cageGrid.appendChild(card);
         });
     }
 
@@ -57,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Save cage
     saveBtn.addEventListener("click", function () {
+        console.log("Save button clicked!");
         const cageNameInput = document.getElementById("cageName");
         const cageDescInput = document.getElementById("description");
         const cageImgInput = document.getElementById("thumbnail");
@@ -70,43 +99,36 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const addCageToList = (imgSrc) => {
-            const cage = {
-                name,
-                imgSrc: imgSrc || defaultImg,
-                description,
-                createdAt: Date.now()
-            };
-
-            cages.push(cage);
-            filterSelect.dispatchEvent(new Event("change"));
-            modal.style.display = "none";
-
-            // Reset form
-            cageNameInput.value = "";
-            cageDescInput.value = "";
-            cageImgInput.value = "";
-        };
-
+        const formData = new FormData();
+        formData.append("cage_name", name);
+        formData.append("cage_desc", description);
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                addCageToList(e.target.result);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            addCageToList(defaultImg);
+            formData.append("cage_image", file);
         }
+        console.log("Attempting to send data...");
+
+        fetch("/agrify/php/Authentications/get_cages.php")
+            .then(response => response.json())
+            .then(data => {
+                cages = data.map(cage => ({
+                    ...cage,
+                    createdAt: Date.now()
+                }));
+                renderCages();  
+                filterSelect.dispatchEvent(new Event("change"));
+            })
+            .catch(error => {
+                console.error("Failed to load cages:", error);
+            });
     });
 
-    // Filtering logic
     filterSelect.addEventListener("change", function () {
         const val = filterSelect.value;
 
         if (val === "A-Z") {
-            cages.sort((a, b) => a.name.localeCompare(b.name));
+            cages.sort((a, b) => a.cage_name.localeCompare(b.cage_name));
         } else if (val === "Z-A") {
-            cages.sort((a, b) => b.name.localeCompare(a.name));
+            cages.sort((a, b) => b.cage_name.localeCompare(a.cage_name));
         } else if (val === "Newest") {
             cages.sort((a, b) => b.createdAt - a.createdAt);
         } else if (val === "Oldest") {
@@ -118,6 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCages();
     });
 
-    // Default sort on load
-    filterSelect.dispatchEvent(new Event("change"));
+    // 🟢 Load from DB on page load
+    fetchAndRenderCages();
 });

@@ -37,7 +37,7 @@
         <main class="content">
             <header>
                 <h1>Home <span id="weather">Loading weather...</span></h1>
-                <a href="../addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
+                <a href="/agrify/addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
                 <a href="login.php">Logout</a>
             </header>
 
