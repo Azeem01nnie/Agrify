@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +16,15 @@
             <h2>AGRIFY</h2>
             <div class="profile">
                 <img src="profile.png" alt="Profile">
-                <p>Azeem Abdu <span>Admin</span></p>
+                <p><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?>
+            <span>Admin</span></p>
             </div>
+
             <nav>
                 <a href="#" class="active">Home</a>
                 <a href="#">Livestock Details</a>
@@ -28,7 +37,7 @@
         <main class="content">
             <header>
                 <h1>Home <span id="weather">Loading weather...</span></h1>
-                <a href="#" class="addcage"><button>+ Add Cage</button></a>
+                <a href="../addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
                 <a href="login.php">Logout</a>
             </header>
 
