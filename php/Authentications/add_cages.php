@@ -1,5 +1,5 @@
 <?php
-require_once '../Config/database.php'; // Adjust as necessary
+require_once '../Config/database.php'; 
 
 header('Content-Type: application/json');
 
@@ -10,7 +10,7 @@ try {
         throw new Exception("Invalid request method.");
     }
 
-    // Sanitize inputs
+    // removes whitespaces
     $cage_name = trim($_POST['cage_name'] ?? '');
     $cage_desc = trim($_POST['cage_desc'] ?? '');
     $image_path = null;
@@ -28,7 +28,7 @@ try {
             throw new Exception("Only JPG, PNG, and GIF files are allowed.");
         }
 
-        $upload_dir = __DIR__ . '/../../uploads/';
+        $upload_dir = __DIR__ . '/../../php/uploads/';
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0755, true);
         }
@@ -41,7 +41,7 @@ try {
         }
 
         // Store relative path from web root
-        $image_path = '/agrify/php/uploads/' . $file_name;
+        $image_path = '/php/uploads/' . $file_name;
     }
 
     // Insert into DB

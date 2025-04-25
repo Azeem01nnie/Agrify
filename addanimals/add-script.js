@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const cageGrid = document.querySelector(".cage-grid");
     const addCageBtn = document.querySelector(".add-cage");
+    console.log(addCageBtn);
     const filterSelect = document.getElementById("filter");
 
     const modal = document.getElementById("cageModal");
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             card.className = 'cage-card';
     
             card.innerHTML = `
-                <img src="${cage.image_path || '/agrify/php/uploads/default_image.png'}" alt="Cage Image">
+                <img src="${cage.image_path || '/uploads/default_image.png'}" alt="Cage Image">
                 <h3>${cage.cage_name}</h3>
                 <p>${cage.cage_desc || ''}</p>
             `;
@@ -74,8 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Open modal
-    addCageBtn.addEventListener("click", function () {
-        modal.style.display = "flex";
+    cageGrid.addEventListener("click", function (e) {
+        if (e.target.closest(".add-cage")) {
+            console.log("Add Cage clicked!");
+            modal.style.display = "flex";
+        }
     });
 
     // Close modal
@@ -89,37 +93,42 @@ document.addEventListener("DOMContentLoaded", function () {
         const cageNameInput = document.getElementById("cageName");
         const cageDescInput = document.getElementById("description");
         const cageImgInput = document.getElementById("thumbnail");
-
+    
         const name = cageNameInput.value.trim();
         const description = cageDescInput.value.trim();
         const file = cageImgInput.files[0];
-
+    
         if (!name) {
             alert("Cage name is required.");
             return;
         }
-
+    
         const formData = new FormData();
         formData.append("cage_name", name);
         formData.append("cage_desc", description);
         if (file) {
             formData.append("cage_image", file);
         }
-        console.log("Attempting to send data...");
-
-        fetch("/agrify/php/Authentications/get_cages.php")
-            .then(response => response.json())
-            .then(data => {
-                cages = data.map(cage => ({
-                    ...cage,
-                    createdAt: Date.now()
-                }));
-                renderCages();  
-                filterSelect.dispatchEvent(new Event("change"));
-            })
-            .catch(error => {
-                console.error("Failed to load cages:", error);
-            });
+    
+        // ✅ Post the form data to add_cages.php
+        fetch("/agrify/php/Authentications/add_cages.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Cage added successfully.");
+                modal.style.display = "none";
+                fetchAndRenderCages(); // Reload cages to show the new one
+            } else {
+                alert("Failed to add cage: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error saving cage:", error);
+            alert("An error occurred while saving the cage.");
+        });
     });
 
     filterSelect.addEventListener("change", function () {
