@@ -41,7 +41,7 @@ try {
         }
 
         // Store relative path from web root
-        $image_path = '/php/uploads/' . $file_name;
+        $image_path = '../php/uploads/' . $file_name;
     }
 
     // Insert into DB

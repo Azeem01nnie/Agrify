@@ -1,8 +1,6 @@
 <?php 
 session_start();
 require_once '../php/Config/database.php';
-file_put_contents("debug.log", "POST: " . print_r($_POST, true) . "\nFILES: " . print_r($_FILES, true), FILE_APPEND);
-
 ?>
 
 <!DOCTYPE html>

@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             card.className = 'cage-card';
     
             card.innerHTML = `
-                <img src="${cage.image_path || '/uploads/default_image.png'}" alt="Cage Image">
+                <img src="${cage.image_path || '../uploads/default_image.png'}" alt="Cage Image">
                 <h3>${cage.cage_name}</h3>
                 <p>${cage.cage_desc || ''}</p>
             `;
