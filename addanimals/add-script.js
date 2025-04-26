@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector(".close-btn");
     const saveBtn = document.getElementById("saveCageBtn");
 
-    const defaultImg = "/addanimals/image.png";
+    const defaultImg = "../addanimals/image.png";
 
     let cages = [];
 
