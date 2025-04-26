@@ -74,6 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     <button class="delete-cage">Delete</button>
                 </div>
             `;
+
+            // Add event listener for the edit button to redirect to cage-details.html with relevant query parameters
+            card.querySelector('.edit-cage').addEventListener('click', function() {
+                const encodedName = encodeURIComponent(cage.cage_name);
+                const encodedDesc = encodeURIComponent(cage.cage_desc || '');
+                const encodedImg = encodeURIComponent(cage.image_path || '');
+
+                window.location.href = `cage-details.php?cage_id=${cage.cage_id}&name=${encodedName}&desc=${encodedDesc}&img=${encodedImg}`;
+            });
     
             cageGrid.appendChild(card);
         });
@@ -82,27 +91,16 @@ document.addEventListener("DOMContentLoaded", function () {
     cageGrid.addEventListener('click', function (e) {
         const card = e.target.closest('.cage-card');
         if (!card || card.classList.contains('add-cage')) return;
-    
+        
         const cageId = card.dataset.cage_id;
-    
-        if (e.target.classList.contains('edit-cage')) {
-            handleEditCage(cageId, card);
-        } else if (e.target.classList.contains('delete-cage')) {
+        
+        if (e.target.classList.contains('delete-cage')) {
             handleDeleteCage(cageId);
         }
     });
     
     // 🟩 Edit Handler
     function handleEditCage(cageId, card) {
-        const name = prompt("Enter new cage name:", card.querySelector('h3').innerText);
-        const desc = prompt("Enter new description:", card.querySelector('p').innerText);
-    
-        if (name === null || desc === null) return; // User cancelled
-    
-        if (!name.trim()) {
-            alert("Cage name cannot be empty.");
-            return;
-        }
     
         fetch("/agrify/php/Authentications/edit_cage.php", {
             method: "POST",

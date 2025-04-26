@@ -1,3 +1,29 @@
+<?php
+session_start();
+require_once '../php/Config/database.php';
+
+if (!isset($_GET['cage_id']) || !isset($_SESSION['user_id'])) {
+    // Redirect if no cage_id or user_id in session
+    header("Location: index.php");
+    exit;
+}
+
+$cage_id = intval($_GET['cage_id']); // Sanitize the input to ensure it's an integer
+$user_id = $_SESSION['user_id'];
+
+// Fetch cage details from the database
+$stmt = $pdo->prepare("SELECT * FROM cages WHERE cage_id = :cage_id AND user_id = :user_id");
+$stmt->execute([':cage_id' => $cage_id, ':user_id' => $user_id]);
+
+$cage = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$cage) {
+    // Redirect if the cage is not found or does not belong to the current user
+    header("Location: index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,5 +95,43 @@
             <button class="close-btn">Close</button>
         </div>
     </div>
+    <script>
+        // Handle saving the cage details
+        const saveCageBtn = document.getElementById('save-cage');
+
+        if (saveCageBtn) {
+            saveCageBtn.addEventListener('click', function() {
+                const cageName = document.getElementById('cage-name').value.trim();
+                const cageDesc = document.getElementById('cage-description').value.trim();
+
+                if (cageName === '') {
+                    alert("Cage name cannot be empty.");
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('cage_id', '<?= $cage['cage_id'] ?>');
+                formData.append('cage_name', cageName);
+                formData.append('cage_desc', cageDesc);
+
+                fetch('update_cage.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Cage details updated successfully.");
+                        location.reload();
+                    } else {
+                        alert("Failed to update cage: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert("An error occurred: " + error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
