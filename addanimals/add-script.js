@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderCages() {
         const cageGrid = document.querySelector('.cage-grid');
-        
+    
         // Clear existing cage cards except the "Add Cage" button
         cageGrid.innerHTML = `
             <div class="cage-card add-cage"><span>+</span><p>Add Cage</p></div>
@@ -63,14 +63,88 @@ document.addEventListener("DOMContentLoaded", function () {
         cages.forEach(cage => {
             const card = document.createElement('div');
             card.className = 'cage-card';
+            card.dataset.cage_id = cage.cage_id;
     
             card.innerHTML = `
                 <img src="${cage.image_path || '../uploads/default_image.png'}" alt="Cage Image">
                 <h3>${cage.cage_name}</h3>
                 <p>${cage.cage_desc || ''}</p>
+                <div class="card-actions">
+                    <button class="edit-cage">Edit</button>
+                    <button class="delete-cage">Delete</button>
+                </div>
             `;
     
             cageGrid.appendChild(card);
+        });
+    }
+
+    cageGrid.addEventListener('click', function (e) {
+        const card = e.target.closest('.cage-card');
+        if (!card || card.classList.contains('add-cage')) return;
+    
+        const cageId = card.dataset.cage_id;
+    
+        if (e.target.classList.contains('edit-cage')) {
+            handleEditCage(cageId, card);
+        } else if (e.target.classList.contains('delete-cage')) {
+            handleDeleteCage(cageId);
+        }
+    });
+    
+    // 🟩 Edit Handler
+    function handleEditCage(cageId, card) {
+        const name = prompt("Enter new cage name:", card.querySelector('h3').innerText);
+        const desc = prompt("Enter new description:", card.querySelector('p').innerText);
+    
+        if (name === null || desc === null) return; // User cancelled
+    
+        if (!name.trim()) {
+            alert("Cage name cannot be empty.");
+            return;
+        }
+    
+        fetch("/agrify/php/Authentications/edit_cage.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cage_id: cageId, cage_name: name.trim(), cage_desc: desc.trim() })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert("Cage updated successfully.");
+                fetchAndRenderCages();
+            } else {
+                alert("Failed to update cage: " + data.message);
+            }
+        })
+        .catch(err => {
+            console.error("Edit error:", err);
+            alert("An error occurred while editing the cage.");
+        });
+    }
+    
+    // 🟩 Delete Handler
+    function handleDeleteCage(cageId) {
+        if (!confirm("Are you sure you want to delete this cage?")) return;
+    
+        fetch("/agrify/php/Authentications/delete_cage.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cage_id: cageId })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert("Cage deleted successfully.");
+                fetchAndRenderCages();
+            } else {
+                alert("Failed to delete cage: " + data.message);
+            }
+        })
+        .catch(err => {
+            console.error("Delete error:", err);
+            alert("An error occurred while deleting the cage.");
         });
     }
 

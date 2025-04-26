@@ -134,6 +134,43 @@ body {
     object-fit: cover;
     border-radius: 5px;
   }
+
+  /* Cage Buttons */
+  .card-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .card-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card-actions .edit-cage {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .card-actions .edit-cage:hover {
+    background-color: #45a049;
+  }
+  
+  .card-actions .delete-cage {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .card-actions .delete-cage:hover {
+    background-color: #d32f2f;
+  }
+  
   
   /* Add Cage */
   .add-cage {
