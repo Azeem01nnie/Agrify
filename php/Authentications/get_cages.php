@@ -1,11 +1,16 @@
 <?php
+session_start();
 require_once '../Config/database.php';
+$user_id = $_SESSION['user_id'];
 
 header('Content-Type: application/json');
 
 try {
-    $stmt = $pdo->query("SELECT cage_id, cage_name, cage_desc, image_path, created_at FROM cages ORDER BY created_at DESC");
+    $stmt = $pdo->prepare("SELECT * FROM cages WHERE user_id = :user_id");
+    $stmt->execute(['user_id' => $user_id]);
+
     $cages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     echo json_encode($cages);
 } catch (PDOException $e) {
     http_response_code(500);
