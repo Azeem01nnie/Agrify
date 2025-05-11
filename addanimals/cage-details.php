@@ -3,25 +3,30 @@ session_start();
 require_once '../php/Config/database.php';
 
 if (!isset($_GET['cage_id']) || !isset($_SESSION['user_id'])) {
-    // Redirect if no cage_id or user_id in session
     header("Location: index.php");
     exit;
 }
 
-$cage_id = intval($_GET['cage_id']); // Sanitize the input to ensure it's an integer
+$cage_id = intval($_GET['cage_id']);
 $user_id = $_SESSION['user_id'];
 
-// Fetch cage details from the database
 $stmt = $pdo->prepare("SELECT * FROM cages WHERE cage_id = :cage_id AND user_id = :user_id");
 $stmt->execute([':cage_id' => $cage_id, ':user_id' => $user_id]);
 
 $cage = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$cage) {
-    // Redirect if the cage is not found or does not belong to the current user
     header("Location: index.php");
     exit;
 }
+
+$stmt = $pdo->prepare("
+    SELECT * FROM animals 
+    WHERE cage_id = :cage_id 
+    ORDER BY created_at DESC
+");
+$stmt->execute([':cage_id' => $cage_id]);
+$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -41,11 +46,11 @@ if (!$cage) {
 
         <hr>
 
-        <img id="cage-img" src="" alt="Cage Image" />
-        <h1 id="cage-title"></h1>
+        <img id="cage-img" src="<?= htmlspecialchars($cage['image_url'] ?? '') ?>" alt="Cage Image" />
+        <h1 id="cage-title"><?= htmlspecialchars($cage['cage_name']) ?></h1>
         <p class="label">Cage description</p>
         <div class="description-container">
-            <p id="cage-description"></p>
+            <p id="cage-description"><?= htmlspecialchars($cage['cage_description']) ?></p>
         </div>
     </div>
 
@@ -65,7 +70,16 @@ if (!$cage) {
                 </tr>
             </thead>
             <tbody class="livestock-body">
-                <!-- Animal rows will be dynamically added here -->
+                <?php foreach ($animals as $animal): ?>
+                <tr>
+                    <td><?= htmlspecialchars($animal['animal_id']) ?></td>
+                    <td><?= htmlspecialchars($animal['animal_type']) ?></td>
+                    <td><?= htmlspecialchars($animal['date_of_birth']) ?></td>
+                    <td><?= $animal['breedable'] ? 'Yes' : 'No' ?></td>
+                    <td>₱<?= number_format($animal['price'], 2) ?></td>
+                    <td><?= $animal['sellable'] ? 'Yes' : 'No' ?></td>
+                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -91,13 +105,91 @@ if (!$cage) {
                 <input type="date" id="dob" />
             </div>
 
+             <div class="lab2">
+                <label>Price (₱):</label>
+                <input type="number" id="price" min="0" step="0.01" required />
+            </div>
+
+            <div class="lab2 checkbox-group">
+                <label>
+                    <input type="checkbox" id="breedable" />
+                    Breedable
+                </label>
+                <label>
+                    <input type="checkbox" id="sellable" />
+                    Sellable
+                </label>
+            </div>
+
             <button id="saveAnimal">Add Animal</button>
             <button class="close-btn">Close</button>
         </div>
     </div>
+    
     <script>
-        // Handle saving the cage details
         const saveCageBtn = document.getElementById('save-cage');
+        const animalTypeSelect = document.getElementById('animalType');
+        const otherTypeInput = document.getElementById('otherType');
+        const addAnimalBtn = document.querySelector('.add-animal-btn');
+        const popupContainer = document.querySelector('.popup-container');
+        const closeBtn = document.querySelector('.close-btn');
+
+        addAnimalBtn.addEventListener('click', () => {
+            popupContainer.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            popupContainer.style.display = 'none';
+        });
+
+        animalTypeSelect.addEventListener('change', function() {
+            otherTypeInput.style.display = this.value === 'Other' ? 'block' : 'none';
+        });
+
+        document.getElementById('saveAnimal').addEventListener('click', function() {
+            const animalType = animalTypeSelect.value === 'Other' ? 
+                document.getElementById('otherType').value : 
+                animalTypeSelect.value;
+            const dob = document.getElementById('dob').value;
+            const price = document.getElementById('price').value;
+            const breedable = document.getElementById('breedable').checked;
+            const sellable = document.getElementById('sellable').checked;
+
+            if (!animalType || !dob || !price) {
+                alert("Please fill in all required fields");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('cage_id', '<?= $cage['cage_id'] ?>');
+            formData.append('animal_type', animalType);
+            formData.append('dob', dob);
+            formData.append('price', price);
+            formData.append('breedable', breedable ? 1 : 0);
+            formData.append('sellable', sellable ? 1 : 0);
+
+            fetch('add_animal.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert("Animal added successfully");
+                    location.reload();
+                } else {
+                    alert("Failed to add animal: " + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert("An error occurred: " + error);
+            });
+        });
 
         if (saveCageBtn) {
             saveCageBtn.addEventListener('click', function() {
