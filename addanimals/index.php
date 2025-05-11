@@ -27,9 +27,9 @@ require_once '../php/Config/database.php';
            <span>Admin</span></p>
       </div>
       <nav>
-        <a href="/agrify/php/Authentications/dashboard.php" class="active">Home</a>
+        <a href="/agrify/php/Authentications/dashboard.php" >Home</a>
         <a href="#">Livestock Details</a>
-        <a href="#">Cages</a>
+        <a href="/agrify/addanimals/index.php" class="active">Cages</a>
         <a href="#">Settings</a>
       </nav>
     </aside>
