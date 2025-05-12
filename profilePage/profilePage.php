@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="profileStyle.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1 class="logo">AGRIFY</h1>
+      <img src="profile.png" alt="User Photo" class="profile-img"  />
+      <p class="username">Admin</p>
+
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">Attendance</a>
+        <a href="#">Schedule</a>
+        <a href="#" class="active">Profile</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h2>Profile Information</h2>
+      <div class="profile-card">
+        <div class="left">
+          <img src="../addanimals/profile.png" alt="User Photo" class="profile-img"  />
+          <label class="change-photo">📷 Change Photo</label>
+          <div class="info">
+            <h3>Barbie B. Batumbakal</h3>
+          </div>
+        </div>
+        <div class="right">
+          <h3>Personal Details</h3>
+          <p><strong>Full Name:</strong> Barbie B. Batumbakal</p>
+          <p><strong>Email Address:</strong> barbie.b@example.com</p>
+          <p><strong>Date of Birth:</strong> 01 / January / 2007</p>
+          <button id="openEditModal" class="edit-btn">✏️ Edit Profile</button>
+        </div>
+      </div>
+
+      <div class="account-settings">
+        <h3>Account Settings</h3>
+        <p><strong>Password:</strong> ******** <a href="#" class="change-link">Change Password</a></p>
+        <p>Manage your account security settings.</p>
+      </div>
+    </main>
+  </div>
+
+
+    <!-- Andito yung modal, mag add ako modal pero wala pa yan sya backend -->
+     <div id="editProfileModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <h3>Edit Profile</h3>
+            <form id="editProfileForm">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+  <script src="ProfileScript.js"></script>
+</body>
+</html>
