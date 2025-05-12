@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Dashboard</title>
     <link rel="stylesheet" href="../Livestock Manage/livestockdetail.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="dashboard">
       
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-      <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username"><?php 
+       <div class="profile">
+                <a href="../../profilePage/profilePage.php">
+                    <img src="profile.png" alt="Profile" />
+                </a>
+                <p><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?> | Admin</p>
+                }?>
+            <span>Admin</span></p>
+        </div>
       <nav class="nav">
         <a href="../Authentications/dashboard.php">Home</a>
         <a href="../php/Livestock%20Manage/Livestockdetails.php" class="active">Livestock Details</a>
@@ -100,18 +105,18 @@
                 </div>
                 <h2 class="expecter">expected monthly</h2>
                 <div class="monthlyflexbox">
-                  <p>December  : <span><strong>70,000.00</strong></span></p>
-                  <p>November  : <span><strong>70,000.00</strong></span></p>
-                  <p>October   :  <span><strong>70,000.00</strong></span></p>
-                  <p>September : <span><strong>70,000.00</strong></span></p>
-                  <p>August    : <span><strong>70,000.00</strong></span></p>
-                  <p>July      : <span><strong>70,000.00</strong></span></p>
-                  <p>June      : <span><strong>70,000.00</strong></span></p>
-                  <p>May       : <span><strong>70,000.00</strong></span></p>
-                  <p>April     : <span><strong>70,000.00</strong></span></p>
-                  <p>March     : <span><strong>70,000.00</strong></span></p>
-                  <p>February  : <span><strong>70,000.00</strong></span></p>
-                  <p>January   : <span><strong>70,000.00</strong></span></p>
+                  <p>December: <span><strong>70,000.00</strong></span></p>
+                  <p>November: <span><strong>70,000.00</strong></span></p>
+                  <p>October:  <span><strong>70,000.00</strong></span></p>
+                  <p>September: <span><strong>70,000.00</strong></span></p>
+                  <p>August: <span><strong>70,000.00</strong></span></p>
+                  <p>July: <span><strong>70,000.00</strong></span></p>
+                  <p>June: <span><strong>70,000.00</strong></span></p>
+                  <p>May: <span><strong>70,000.00</strong></span></p>
+                  <p>April: <span><strong>70,000.00</strong></span></p>
+                  <p>March: <span><strong>70,000.00</strong></span></p>
+                  <p>February: <span><strong>70,000.00</strong></span></p>
+                  <p>January: <span><strong>70,000.00</strong></span></p>
                 </div>
             </section>
              </div>
@@ -120,6 +125,7 @@
             <!-- Sales Chart -->
             <section class="chart-section">
                 <h2>Livestock Sales</h2>
+<<<<<<< HEAD
                 <section class="chart-section">
                 <h2>Livestock Sales</h2>
                 <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
@@ -149,13 +155,13 @@ new Chart("myChart", {
 });
 </script>
             </section>
+=======
+                <canvas id="salesChart"></canvas>
+>>>>>>> 8d642e575b5bb9688771aeea9ddb566c5ffae553
             </section>
         </main>
     </div>
     </div>
-
-    <script>
-        
-    </script>
+    <script src="livestockdet.js"></script>
 </body>
 </html>
