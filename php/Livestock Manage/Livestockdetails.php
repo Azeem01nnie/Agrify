@@ -19,11 +19,10 @@
                 } else {
                     echo "Guest";
                 }?> | Admin</p>
-
       <nav class="nav">
          <a href="#">Profile</a>
         <a href="../php/Authentications/dashboard.php">Home</a>
-        <a href="#">Livestock Details</a>
+        <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
         <a href="../addanimals/index.php">Cages</a>
         <a href="#">Settings</a>
       </nav>
