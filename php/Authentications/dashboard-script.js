@@ -117,21 +117,29 @@ rangeInput.addEventListener('input', () => {
 setProgress(rangeInput.value);
 
 // Burger Menu Functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
     const burgerMenu = document.querySelector('.burger-menu');
     const sidebar = document.querySelector('.sidebar');
-    
-    burgerMenu.addEventListener('click', function() {
-        sidebar.classList.toggle('active');
-        burgerMenu.classList.toggle('active');
-    });
+    const content = document.querySelector('.content');
 
-    // Close sidebar when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
-            sidebar.classList.remove('active');
-            burgerMenu.classList.remove('active');
-        }
-    });
+    if (burgerMenu && sidebar) {
+        burgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            sidebar.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+            if(content) content.classList.toggle('sidebar-active');
+        });
+
+        // Optional: close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                if(content) content.classList.remove('sidebar-active');
+            }
+        });
+    }
 });
+
+
 

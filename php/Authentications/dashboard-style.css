@@ -31,6 +31,7 @@ body{
     top: 0;
 }
 
+
 .sidebar h2 {
     margin-bottom: 20px;
 }
@@ -298,23 +299,39 @@ header span {
     color: #000;
   }
   
-/* Burger Menu Styles */
+/* Minimal Burger Menu */
 .burger-menu {
     display: none;
     cursor: pointer;
     padding: 10px;
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 1000;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 }
-
 .burger-menu div {
-    width: 25px;
+    display: block;
+    width: 28px;
     height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    transition: all 0.3s ease;
+    background-color: #3a9632;
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+/* Burger Menu Animation (optional, for X effect) */
+.burger-menu.active div:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.burger-menu.active div:nth-child(2) {
+    opacity: 0;
+}
+.burger-menu.active div:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Responsive Design */
@@ -329,6 +346,10 @@ header span {
         transition: transform 0.3s ease;
         position: fixed;
         z-index: 999;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        background: #4CAF50;
     }
 
     .sidebar.active {
@@ -342,6 +363,11 @@ header span {
     .content {
         margin-left: 0;
         padding: 60px 20px 20px;
+        transition: margin-left 0.3s ease;
+    }
+
+    .content.sidebar-active {
+        margin-left: 250px;
     }
 
     .cages {
@@ -384,6 +410,47 @@ header span {
 
     .circular-progress-78 {
         width: 150px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .dashboard {
+        flex-direction: row;
+        width: 100%;
+    }
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        width: 250px !important;
+        padding: 20px 0;
+        transition: left 0.3s ease;
+        z-index: 100;
+        background: #4CAF50;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+    .burger-menu {
+        display: flex;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+        box-sizing: border-box;
+    }
+    .content {
+        width: 100%;
+        margin-left: 0;
     }
 }
   

@@ -111,6 +111,19 @@
     </div>
     </div>
 
-    <script src="dashboard-script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const burgerMenu = document.querySelector('.burger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        burgerMenu.addEventListener('click', function() {
+            console.log('Burger menu clicked'); // Debugging line
+            sidebar.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+            content.classList.toggle('sidebar-active');
+        });
+    });
+    </script>
 </body>
 </html>

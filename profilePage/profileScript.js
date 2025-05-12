@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Burger Menu Functionality
     const burgerMenu = document.querySelector('.burger-menu');
     const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
     
     burgerMenu.addEventListener('click', function() {
         sidebar.classList.toggle('active');
         burgerMenu.classList.toggle('active');
+        mainContent.classList.toggle('sidebar-active');
     });
 
     // Close sidebar when clicking outside
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
             sidebar.classList.remove('active');
             burgerMenu.classList.remove('active');
+            mainContent.classList.remove('sidebar-active');
         }
     });
 
