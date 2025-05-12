@@ -12,13 +12,18 @@
       
         <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-      <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username"><?php 
+       <div class="profile">
+                <a href="../../profilePage/profilePage.php">
+                    <img src="profile.png" alt="Profile" />
+                </a>
+                <p><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?> | Admin</p>
+                }?>
+            <span>Admin</span></p>
+        </div>
       <nav class="nav">
         <a href="../php/Authentications/dashboard.php">Home</a>
         <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
