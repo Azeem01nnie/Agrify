@@ -15,13 +15,12 @@ session_start();
     <!-- Sidebar -->
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-      <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username"><?php 
+      <div class="spacing"><p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?> | Admin</p>
+                }?> | Admin</p></div>
 
       <nav class="nav">
         <a href="../php/Authentications/dashboard.php">Home</a>
