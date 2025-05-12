@@ -34,7 +34,7 @@
 
             <nav>
                 <a href="/agrify/php/Authentications/dashboard.php" class="active">Home</a>
-                <a href="#">Livestock Details</a>
+                <a href="/agrify/php/Livestock Manage/Livestockdetails.php">Livestock Details</a>
                 <a href="/agrify/addanimals/index.php">Cages</a>
                 <a href="#">Settings</a>
             </nav>
