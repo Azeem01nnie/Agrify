@@ -36,7 +36,7 @@
         <div class="right">
           <h3>Personal Details</h3>
         <p><strong>Full Name:</strong> <span id="fullName"></span></p>
-        <p><strong>Email Address:</strong> <span id="address"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
         <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
 
         <button id="openEditModal" class="edit-btn">✏️ Edit Profile</button>
