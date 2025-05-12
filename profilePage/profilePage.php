@@ -11,14 +11,14 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-      <img src="profile.png" alt="User Photo" class="profile-img"  />
-      <p class="username">Admin</p>
+      <img src="" style="opacity: 0.5;" class="profile-img"/>
+      <p class="username">User | Admin</p>
 
       <nav class="nav">
-        <a href="#">Home</a>
+        <a href="../php/Authentications/dashboard.php">Home</a>
         <a href="#">livestock Details</a>
-        <a href="#">Cages</a>
-        <a href="#" class="active">Settings</a>
+        <a href="../addanimals/index.php">Cages</a>
+        <a href="#">Settings</a>
       </nav>
     </aside>
 
@@ -35,10 +35,11 @@
         </div>
         <div class="right">
           <h3>Personal Details</h3>
-          <p><strong>Full Name:</strong> Barbie B. Batumbakal</p>
-          <p><strong>Email Address:</strong> barbie.b@example.com</p>
-          <p><strong>Date of Birth:</strong> 01 / January / 2007</p>
-          <button id="openEditModal" class="edit-btn">✏️ Edit Profile</button>
+        <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+        <p><strong>Email Address:</strong> <span id="address"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+
+        <button id="openEditModal" class="edit-btn">✏️ Edit Profile</button>
         </div>
       </div>
 
@@ -58,13 +59,13 @@
             <h3>Edit Profile</h3>
             <form id="editProfileForm">
             <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
+            <input type="text" id="edit_fullname" name="fullname" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Address:</label>
+            <input type="text" id="edit_address" name="address" required>
 
             <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
+            <input type="date" id="edit_dob" name="dob" required>
 
             <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>
