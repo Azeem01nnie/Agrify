@@ -5,35 +5,17 @@
     font-family: Arial, sans-serif;
 }
 body{
-    background-color: #45a049;
+    background-color: #ffffff;
 }
 
 
 .dashboard {
     display: flex;
     height: 1061px;
-    background: #f4f4f4;
+    background: #ffffff;
     width: 1400px;
     margin-top: 10px;
-    margin-left: 00px;
-}
-
-
-.sidebar {
-    width: 250px;
-    background: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    height: 100vh; 
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-
-.sidebar h2 {
-    margin-bottom: 20px;
+    margin-left: 100px;
 }
 
 .profile img {
@@ -99,20 +81,34 @@ header span {
 }
 
 .addcage {
-   
     padding: 10px 15px;
     border-radius: 5px;
 }
-.addcage button{
+
+.addcage button {
     background: #4CAF50;
-    padding: 10px 15px;
+    padding: 10px 13px;
     border-radius: 5px;
     border: none;
-  
+    color: white;
+    margin-left: 600px;
 }
 
 .addcage button:hover {
     background: #45a049;
+}
+
+.logout {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.logout button {
+    background: #4CAF50;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
 }
 
 
@@ -153,7 +149,7 @@ header span {
 .bar {
     flex: 1;
     height: 15px;
-    background: #5a7d4e; 
+    background: #4CAF50; 
     border-radius: 10px;
     transition: width 1s ease-in-out;
 }
@@ -229,7 +225,7 @@ header span {
 }
 .expect > p
 {
-    color: #45a049;
+    color: #4CAF50;
     font-weight: bold;
 }
 .expect strong{
@@ -250,14 +246,14 @@ header span {
   .circular-progress-78 .progress-ring__background,
   .circular-progress-78 .progress-ring__circle {
     fill: transparent;
-    stroke-width: 12;
+    stroke-width: 19;
     
 
   }
   
 
   .circular-progress-78 .progress-ring__background {
-    stroke: #4c7c4c;
+    stroke: #4CAF50;
   }
   
 
@@ -288,7 +284,7 @@ header span {
   .circular-progress-78 .label {
     font-size: 18px;
     font-weight: bold;
-    color: #4c7c4c;
+    color: #4CAF50;
     margin-bottom: 4px;
   }
   

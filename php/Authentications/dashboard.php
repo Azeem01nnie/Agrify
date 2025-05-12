@@ -7,8 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Dashboard</title>
     <link rel="stylesheet" href="../Authentications/dashboard-style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
+<style>
+    .sidebar {
+    width: 250px;
+    background: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+
+}
+</style>
 <body>
     <div class="dashboard">
         <div class="burger-menu">
@@ -18,34 +36,28 @@
         </div>
       
         <aside class="sidebar">
-            <h2>AGRIFY</h2>
-            <div class="profile">
-                <a href="../../profilePage/profilePage.php">
-                    <img src="profile.png" alt="Profile" />
-                </a>
-                <p><?php 
+      <h1 class="logo">AGRIFY</h1>
+      <img src="" style="opacity: 0.5;" class="profile-img"/>
+      <p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?>
-            <span>Admin</span></p>
-            </div>
-
-            <nav>
-                <a href="/agrify/php/Authentications/dashboard.php" class="active">Home</a>
-                <a href="/agrify/php/Livestock Manage/Livestockdetails.php">Livestock Details</a>
-                <a href="/agrify/addanimals/index.php">Cages</a>
-                <a href="#">Settings</a>
-            </nav>
-        </aside>
+                }?> | Admin</p>
+      <nav class="nav">
+        <a href="../php/Authentications/dashboard.php" class="active">Home</a>
+        <a href="../Livestock%20Manage/Livestockdetails.php">Livestock Details</a>
+        <a href="../addanimals/index.php">Cages</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
 
     <div class="main">
         <main class="content">
             <header>
                 <h1>Home <span id="weather">Loading weather...</span></h1>
                 <a href="/agrify/addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
-                <a href="login.php">Logout</a>
+                <a href="login.php" class="logout"><button>Logout</button></a>
             </header>
 
             <div id="cages" class="cages">
@@ -105,7 +117,33 @@
             <!-- Sales Chart -->
             <section class="chart-section">
                 <h2>Livestock Sales</h2>
-                <canvas id="salesChart"></canvas>
+                <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+
+<script>
+var xValues = ["2021", "2022", "2023", "2024", "2025"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = ["#4CAF50", "#4CAF50","#4CAF50","#4CAF50","#4CAF50"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      lineTension: 0,
+      backgroundColor: "#4CAF50",
+      borderColor: "#4CAF50",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Livestock Graph"
+    }
+  }
+});
+</script>
             </section>
         </main>
     </div>

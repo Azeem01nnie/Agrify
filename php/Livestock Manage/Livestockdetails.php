@@ -10,7 +10,7 @@
 <body>
     <div class="dashboard">
       
-        <aside class="sidebar">
+    <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
        <div class="profile">
                 <a href="../../profilePage/profilePage.php">
@@ -25,8 +25,8 @@
             <span>Admin</span></p>
         </div>
       <nav class="nav">
-        <a href="../php/Authentications/dashboard.php">Home</a>
-        <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
+        <a href="../Authentications/dashboard.php">Home</a>
+        <a href="../php/Livestock%20Manage/Livestockdetails.php" class="active">Livestock Details</a>
         <a href="../addanimals/index.php">Cages</a>
         <a href="#">Settings</a>
       </nav>
@@ -125,7 +125,39 @@
             <!-- Sales Chart -->
             <section class="chart-section">
                 <h2>Livestock Sales</h2>
+<<<<<<< HEAD
+                <section class="chart-section">
+                <h2>Livestock Sales</h2>
+                <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+
+<script>
+const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "green",
+      borderColor: "rgba(114, 114, 126, 0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
+</script>
+            </section>
+=======
                 <canvas id="salesChart"></canvas>
+>>>>>>> 8d642e575b5bb9688771aeea9ddb566c5ffae553
             </section>
         </main>
     </div>

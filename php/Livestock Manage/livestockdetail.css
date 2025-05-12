@@ -177,6 +177,7 @@ nav a.active, nav a:hover {
 }
 
 .monthlyflexbox span {
+    width: 70px;
     margin-left: 300px;
 }
 
@@ -191,7 +192,7 @@ nav a.active, nav a:hover {
 .bar {
     flex: 1;
     height: 15px;
-    background: #5a7d4e;
+    background: #4CAF50;
     border-radius: 10px;
     transition: width 1s ease-in-out;
 }
@@ -288,7 +289,7 @@ nav a.active, nav a:hover {
 }
 
 .circular-progress-78 .progress-ring__background {
-    stroke: #4c7c4c;
+    stroke: #4CAF50;
 }
 
 .circular-progress-78 .progress-ring__circle {
@@ -336,7 +337,7 @@ nav a.active, nav a:hover {
 }
 
 .expect > p {
-    color: #45a049;
+    color: #4CAF50;
     font-weight: bold;
 }
 
