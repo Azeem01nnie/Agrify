@@ -17,7 +17,10 @@ require_once '../php/Config/database.php';
     <aside class="sidebar">
       <h2>AGRIFY</h2>
       <div class="profile">
-        <img src="profile.png" alt="Profile" />
+        <a href="../profilePage/profilePage.php">
+          <img src="profile.png" alt="Profile" />
+        </a>
+        
         <p><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
