@@ -116,3 +116,22 @@ rangeInput.addEventListener('input', () => {
 
 setProgress(rangeInput.value);
 
+// Burger Menu Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const sidebar = document.querySelector('.sidebar');
+    
+    burgerMenu.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        burgerMenu.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
+            sidebar.classList.remove('active');
+            burgerMenu.classList.remove('active');
+        }
+    });
+});
+

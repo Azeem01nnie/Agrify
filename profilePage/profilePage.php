@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +12,20 @@ session_start();
 </head>
 <body>
   <div class="container">
+    <div class="burger-menu">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <!-- Sidebar -->
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-      <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username"><?php 
+      <div class="spacing"><p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?> | Admin</p>
+                }?> | Admin</p></div>
 
       <nav class="nav">
         <a href="../php/Authentications/dashboard.php">Home</a>
@@ -44,7 +49,7 @@ session_start();
         <div class="right">
           <h3>Personal Details</h3>
         <p><strong>Full Name:</strong> <span id="fullName"></span></p>
-        <p><strong>Email Address:</strong> <span id="address"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
         <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
 
         <button id="openEditModal" class="edit-btn">✏️ Edit Profile</button>
