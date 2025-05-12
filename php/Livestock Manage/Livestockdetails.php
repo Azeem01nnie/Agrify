@@ -10,7 +10,7 @@
 <body>
     <div class="dashboard">
       
-        <aside class="sidebar">
+    <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
       <img src="" style="opacity: 0.5;" class="profile-img"/>
       <p class="username"><?php 
@@ -20,8 +20,8 @@
                     echo "Guest";
                 }?> | Admin</p>
       <nav class="nav">
-        <a href="../php/Authentications/dashboard.php">Home</a>
-        <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
+        <a href="../Authentications/dashboard.php">Home</a>
+        <a href="../php/Livestock%20Manage/Livestockdetails.php" class="active">Livestock Details</a>
         <a href="../addanimals/index.php">Cages</a>
         <a href="#">Settings</a>
       </nav>
@@ -135,8 +135,8 @@ new Chart("myChart", {
     datasets: [{
       fill: false,
       lineTension: 0,
-      backgroundColor: "rgba(0,0,255,1.0)",
-      borderColor: "rgba(0,0,255,0.1)",
+      backgroundColor: "green",
+      borderColor: "rgba(114, 114, 126, 0.1)",
       data: yValues
     }]
   },
