@@ -25,7 +25,7 @@
             <span>Admin</span></p>
         </div>
       <nav class="nav">
-        <a href="../php/Authentications/dashboard.php">Home</a>
+        <a href="/agrify/php/Authentications/dashboard.php">Home</a>
         <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
         <a href="../addanimals/index.php">Cages</a>
         <a href="#">Settings</a>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="progress">
                         <span>Others</span>
-                        <div class="bar" id="ducks" style="width: 0;"></div>
+                        <div class="bar" id="others" style="width: 0;"></div>
                     </div>
                     <div class="infostock">
                         <span>Current sold: 100</span>
@@ -131,6 +131,129 @@
     </div>
     </div>
 
+    <!-- Make sure Chart.js is included -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // 📊 Chart Initialization
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Sales',
+                data: [50, 62, 100, 110, 150, 200],
+                backgroundColor: '#4CAF50'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 📶 Animate Progress Bars
+    setTimeout(() => {
+        document.getElementById("cows").style.width = "40%";
+        document.getElementById("chicken").style.width = "35%";
+        document.getElementById("goats").style.width = "25%";
+        document.getElementById("ducks").style.width = "15%";
+    }, 500);
+
+    // 🔵 Circular Progress Animation
+    const circleProgress = document.querySelector(".circle-progress");
+    if (circleProgress) {
+        const radius1 = 45;
+        const circumference1 = 2 * Math.PI * radius1;
+        const percentage1 = 78;
+
+        circleProgress.style.strokeDasharray = `${circumference1}`;
+        circleProgress.style.strokeDashoffset = `${circumference1}`;
+
+        setTimeout(() => {
+            const offset = circumference1 - (percentage1 / 100) * circumference1;
+            circleProgress.style.strokeDashoffset = `${offset}`;
+        }, 300);
+    }
+
+    // 🌦️ Weather Detection via OpenWeatherMap
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const apiKey = 'fea287f3fa31ebc969dfa9916be7f0d5';
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+                .then(res => res.json())
+                .then(data => {
+                    const temp = Math.round(data.main.temp);
+                    const condition = data.weather[0].main;
+                    const icon = weatherEmoji(condition);
+                    document.getElementById('weather').textContent = `${icon} ${temp}°C ${condition}`;
+                })
+                .catch(err => {
+                    console.error("Weather error:", err);
+                    document.getElementById('weather').textContent = '☁️ Weather unavailable';
+                });
+        });
+    } else {
+        document.getElementById('weather').textContent = '🌍 Location unavailable';
+    }
+
+    function weatherEmoji(condition) {
+        const icons = {
+            Clear: "☀️",
+            Clouds: "☁️",
+            Rain: "🌧️",
+            Drizzle: "🌦️",
+            Thunderstorm: "⛈️",
+            Snow: "❄️",
+            Mist: "🌫️",
+            Smoke: "🌫️",
+            Haze: "🌫️",
+            Dust: "🌬️",
+            Fog: "🌫️",
+            Sand: "🌬️",
+            Ash: "🌋",
+            Squall: "🌬️",
+            Tornado: "🌪️"
+        };
+        return icons[condition] || "🌡️";
+    }
+
+    // 🎯 Interactive Circular Progress (with range input)
+    const container = document.querySelector('.circular-progress-78');
+    if (container) {
+        const circle2 = container.querySelector('.progress-ring__circle');
+        const percentageDisplay = container.querySelector('#percentage');
+        const rangeInput = document.getElementById('rangeInput');
+
+        const radius2 = 78;
+        const circumference2 = 2 * Math.PI * radius2;
+
+        circle2.style.strokeDasharray = `${circumference2} ${circumference2}`;
+        circle2.style.strokeDashoffset = `${circumference2}`;
+
+        function setProgress(percent) {
+            const offset = circumference2 - (percent / 100) * circumference2;
+            circle2.style.strokeDashoffset = offset;
+            percentageDisplay.textContent = `${percent}%`;
+        }
+
+        rangeInput.addEventListener('input', () => {
+            setProgress(rangeInput.value);
+        });
+
+        setProgress(rangeInput.value);
+    }
+});
+</script>
     <script src="livestockdet.js"></script>
 </body>
 </html>

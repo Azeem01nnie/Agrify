@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("chicken").style.width = "35%";
         document.getElementById("goats").style.width = "25%";
         document.getElementById("ducks").style.width = "15%";
+        document.getElementById("others").style.width = "10%";
     }, 500);
 
     // 🔵 Circular Progress Animation
@@ -52,11 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            const apiKey = 'YOUR_API_KEY'; // 🔑 Replace with your OpenWeatherMap API key
+            const apiKey = 'fea287f3fa31ebc969dfa9916be7f0d5'; // 🔑 Replace with your OpenWeatherMap API key
 
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
                 .then(res => res.json())
                 .then(data => {
+                    console.log("Weather API response:", data);
+                    
                     const temp = Math.round(data.main.temp);
                     const condition = data.weather[0].main;
                     const icon = weatherEmoji(condition);
@@ -113,6 +116,16 @@ const rangeInput = document.getElementById('rangeInput');
 rangeInput.addEventListener('input', () => {
   setProgress(rangeInput.value);
 });
+
+    navigator.geolocation.getCurrentPosition(
+    function (position) {
+        // success logic
+    },
+    function (error) {
+        console.error("Geolocation error:", error);
+        document.getElementById('weather').textContent = '📍 Unable to detect location';
+    }
+);
 
 setProgress(rangeInput.value);
 
