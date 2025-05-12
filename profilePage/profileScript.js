@@ -75,6 +75,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Handle change password form submission
+    document.getElementById("changePasswordForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const currentPassword = document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Basic validation for matching new passwords
+        if (newPassword !== confirmPassword) {
+            alert("The new passwords do not match.");
+            return;
+        }
+
+        // Send the password change request to the backend
+        fetch("backends/changePass.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                currentPassword: currentPassword,
+                newPassword: newPassword
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === "success") {
+                alert("Password changed successfully!");
+                changePasswordModal.style.display = "none";
+            } else {
+                alert("Error changing password: " + result.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error changing password:", error);
+            alert("An error occurred while changing the password.");
+        });
+    });
+
+    // Handle profile edit form submission
     document.getElementById("editProfileForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
