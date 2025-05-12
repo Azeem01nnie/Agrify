@@ -1,25 +1,18 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Dashboard</title>
-    <link rel="stylesheet" href="../Authentications/dashboard-style.css">
+    <link rel="stylesheet" href="../Livestock Manage/livestockdetail.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="dashboard">
-        <div class="burger-menu">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
       
         <aside class="sidebar">
-            <h2>AGRIFY</h2>
-            <div class="profile">
+      <h1 class="logo">AGRIFY</h1>
+       <div class="profile">
                 <a href="../../profilePage/profilePage.php">
                     <img src="profile.png" alt="Profile" />
                 </a>
@@ -30,48 +23,64 @@
                     echo "Guest";
                 }?>
             <span>Admin</span></p>
-            </div>
-
-            <nav>
-                <a href="/agrify/php/Authentications/dashboard.php" class="active">Home</a>
-                <a href="/agrify/php/Livestock Manage/Livestockdetails.php">Livestock Details</a>
-                <a href="/agrify/addanimals/index.php">Cages</a>
-                <a href="#">Settings</a>
-            </nav>
-        </aside>
+        </div>
+      <nav class="nav">
+        <a href="../php/Authentications/dashboard.php">Home</a>
+        <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
+        <a href="../addanimals/index.php">Cages</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
 
     <div class="main">
         <main class="content">
             <header>
-                <h1>Home <span id="weather">Loading weather...</span></h1>
-                <a href="/agrify/addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
-                <a href="login.php">Logout</a>
+                <h1 class="ld">Livestock Details <span id="weather">Loading weather...</span></h1>
+                <a href="login.php" class="logout"><button>Logout</button></a>
             </header>
-
-            <div id="cages" class="cages">
-                <div class="cage">CAGE 1</div>
-                <div class="cage">CAGE 2 CHICKEN</div>
-                <div class="cage">CAGE 3</div>
-            </div>
             <div class="cont">
             <div class="stock">
                 <section class="livestock">
-                    <h2>Livestock Details</h2>
+                    <h2>Stocks and Details</h2>
                     <div class="progress">
                         <span>Cows</span>
                         <div class="bar" id="cows" style="width: 0;"></div>
+                    </div>
+                    <div class="infostock">
+                        <span>Current sold: 100</span>
+                        <span>Sellable stock: 100</span>
                     </div>
                     <div class="progress">
                         <span>Chicken</span>
                         <div class="bar" id="chicken" style="width: 0;"></div>
                     </div>
+                    <div class="infostock">
+                        <span>Current sold: 100</span>
+                        <span>Sellable stock: 100</span>
+                    </div>
                     <div class="progress">
                         <span>Goats</span>
                         <div class="bar" id="goats" style="width: 0;"></div>
                     </div>
+                    <div class="infostock">
+                        <span>Current sold: 100</span>
+                        <span>Sellable stock: 100</span>
+                    </div>
                     <div class="progress">
                         <span>Ducks</span>
                         <div class="bar" id="ducks" style="width: 0;"></div>
+                    </div>
+                    <div class="infostock">
+                        <span>Current sold: 100</span>
+                        <span>Sellable stock: 100</span>
+                    </div>
+                    <div class="progress">
+                        <span>Others</span>
+                        <div class="bar" id="ducks" style="width: 0;"></div>
+                    </div>
+                    <div class="infostock">
+                        <span>Current sold: 100</span>
+                        <span>Sellable stock: 100</span>
                     </div>
                 </section>
              </div>
@@ -89,14 +98,25 @@
                           <div id="percentage">78%</div>
                         </div>
                       </div>
-                      
-                      
-                      
-                      
                 <div class="expect">
                 <p>Expected Profit: <strong>700,000.00</strong></p>
                 <p>Current Profit: <strong>150,000.00</strong></p>
                </div>
+                </div>
+                <h2 class="expecter">expected monthly</h2>
+                <div class="monthlyflexbox">
+                  <p>December: <span><strong>70,000.00</strong></span></p>
+                  <p>November: <span><strong>70,000.00</strong></span></p>
+                  <p>October:  <span><strong>70,000.00</strong></span></p>
+                  <p>September: <span><strong>70,000.00</strong></span></p>
+                  <p>August: <span><strong>70,000.00</strong></span></p>
+                  <p>July: <span><strong>70,000.00</strong></span></p>
+                  <p>June: <span><strong>70,000.00</strong></span></p>
+                  <p>May: <span><strong>70,000.00</strong></span></p>
+                  <p>April: <span><strong>70,000.00</strong></span></p>
+                  <p>March: <span><strong>70,000.00</strong></span></p>
+                  <p>February: <span><strong>70,000.00</strong></span></p>
+                  <p>January: <span><strong>70,000.00</strong></span></p>
                 </div>
             </section>
              </div>
@@ -111,19 +131,6 @@
     </div>
     </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const burgerMenu = document.querySelector('.burger-menu');
-        const sidebar = document.querySelector('.sidebar');
-        const content = document.querySelector('.content');
-
-        burgerMenu.addEventListener('click', function() {
-            console.log('Burger menu clicked'); // Debugging line
-            sidebar.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-            content.classList.toggle('sidebar-active');
-        });
-    });
-    </script>
+    <script src="livestockdet.js"></script>
 </body>
 </html>
