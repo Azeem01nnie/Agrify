@@ -7,6 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const changePasswordModal = document.getElementById("changePasswordModal");
     const closeChangePasswordBtn = document.getElementById("closeChangePasswordModal");
 
+    // Burger Menu Functionality
+    const burgerMenu = document.querySelector('.burger-menu');
+    const sidebar = document.querySelector('.sidebar');
+    
+    burgerMenu.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        burgerMenu.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
+            sidebar.classList.remove('active');
+            burgerMenu.classList.remove('active');
+        }
+    });
+
     // Function to load profile data dynamically into the page
     function loadProfileData() {
         fetch("backends/loadProfile.php")

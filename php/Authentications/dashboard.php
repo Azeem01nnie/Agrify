@@ -11,6 +11,11 @@
 </head>
 <body>
     <div class="dashboard">
+        <div class="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
       
         <aside class="sidebar">
             <h2>AGRIFY</h2>

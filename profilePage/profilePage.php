@@ -12,6 +12,11 @@ session_start();
 </head>
 <body>
   <div class="container">
+    <div class="burger-menu">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <!-- Sidebar -->
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
