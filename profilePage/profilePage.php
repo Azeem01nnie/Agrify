@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,12 @@
     <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
       <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username">User | Admin</p>
+      <p class="username"><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?> | Admin</p>
 
       <nav class="nav">
         <a href="../php/Authentications/dashboard.php">Home</a>
