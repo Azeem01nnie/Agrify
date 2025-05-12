@@ -16,9 +16,9 @@
 
       <nav class="nav">
         <a href="#">Home</a>
-        <a href="#">Attendance</a>
-        <a href="#">Schedule</a>
-        <a href="#" class="active">Profile</a>
+        <a href="#">livestock Details</a>
+        <a href="#">Cages</a>
+        <a href="#" class="active">Settings</a>
       </nav>
     </aside>
 
@@ -44,14 +44,14 @@
 
       <div class="account-settings">
         <h3>Account Settings</h3>
-        <p><strong>Password:</strong> ******** <a href="#" class="change-link">Change Password</a></p>
+        <p><strong>Password:</strong> ******** <a href="#" class="change-link" id="openChangePasswordBtn">Change Password</a></p>
         <p>Manage your account security settings.</p>
       </div>
     </main>
   </div>
 
 
-    <!-- Andito yung modal, mag add ako modal pero wala pa yan sya backend -->
+    <!-- Andito yung modal ng edit and change pass, mag add ako modal pero wala pa yan sya backend -->
      <div id="editProfileModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-button" id="closeModal">&times;</span>
@@ -65,6 +65,25 @@
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" required>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="changePasswordModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" id="closeChangePasswordModal">&times;</span>
+            <h3>Change Password</h3>
+            <form id="changePasswordForm">
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmPassword">Confirm New Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
 
             <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>
