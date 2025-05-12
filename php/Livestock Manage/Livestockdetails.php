@@ -12,18 +12,13 @@
       
         <aside class="sidebar">
       <h1 class="logo">AGRIFY</h1>
-       <div class="profile">
-                <a href="../../profilePage/profilePage.php">
-                    <img src="profile.png" alt="Profile" />
-                </a>
-                <p><?php 
+      <img src="" style="opacity: 0.5;" class="profile-img"/>
+      <p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?>
-            <span>Admin</span></p>
-        </div>
+                }?> | Admin</p>
       <nav class="nav">
         <a href="../php/Authentications/dashboard.php">Home</a>
         <a href="/agrify/php/Livestock Manage/Livestockdetails.php" class="active">Livestock Details</a>
@@ -105,18 +100,18 @@
                 </div>
                 <h2 class="expecter">expected monthly</h2>
                 <div class="monthlyflexbox">
-                  <p>December: <span><strong>70,000.00</strong></span></p>
-                  <p>November: <span><strong>70,000.00</strong></span></p>
-                  <p>October:  <span><strong>70,000.00</strong></span></p>
-                  <p>September: <span><strong>70,000.00</strong></span></p>
-                  <p>August: <span><strong>70,000.00</strong></span></p>
-                  <p>July: <span><strong>70,000.00</strong></span></p>
-                  <p>June: <span><strong>70,000.00</strong></span></p>
-                  <p>May: <span><strong>70,000.00</strong></span></p>
-                  <p>April: <span><strong>70,000.00</strong></span></p>
-                  <p>March: <span><strong>70,000.00</strong></span></p>
-                  <p>February: <span><strong>70,000.00</strong></span></p>
-                  <p>January: <span><strong>70,000.00</strong></span></p>
+                  <p>December  : <span><strong>70,000.00</strong></span></p>
+                  <p>November  : <span><strong>70,000.00</strong></span></p>
+                  <p>October   :  <span><strong>70,000.00</strong></span></p>
+                  <p>September : <span><strong>70,000.00</strong></span></p>
+                  <p>August    : <span><strong>70,000.00</strong></span></p>
+                  <p>July      : <span><strong>70,000.00</strong></span></p>
+                  <p>June      : <span><strong>70,000.00</strong></span></p>
+                  <p>May       : <span><strong>70,000.00</strong></span></p>
+                  <p>April     : <span><strong>70,000.00</strong></span></p>
+                  <p>March     : <span><strong>70,000.00</strong></span></p>
+                  <p>February  : <span><strong>70,000.00</strong></span></p>
+                  <p>January   : <span><strong>70,000.00</strong></span></p>
                 </div>
             </section>
              </div>
@@ -131,6 +126,123 @@
     </div>
     </div>
 
-    <script src="livestockdet.js"></script>
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Sales',
+            data: [50, 62, 100, 110, 150, 200],
+            backgroundColor: '#4CAF50'
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+
+// Animate Progress Bars
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        document.getElementById("cows").style.width = "40%";
+        document.getElementById("chicken").style.width = "35%";
+        document.getElementById("goats").style.width = "25%";
+        document.getElementById("ducks").style.width = "15%";
+    }, 500);
+
+    // 🔵 Circular Progress Animation
+    const circle = document.querySelector(".circle-progress");
+    const radius = 45;
+    const circumference = 2 * Math.PI * radius;
+    const percentage = 78; // Set your value here
+
+    if (circle) {
+        circle.style.strokeDasharray = `${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        setTimeout(() => {
+            const offset = circumference - (percentage / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }, 300);
+    }
+});
+
+// 🌦️ Auto-Detect Weather using OpenWeatherMap API
+document.addEventListener("DOMContentLoaded", function () {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const apiKey = 'YOUR_API_KEY'; // 🔑 Replace with your OpenWeatherMap API key
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+                .then(res => res.json())
+                .then(data => {
+                    const temp = Math.round(data.main.temp);
+                    const condition = data.weather[0].main;
+                    const icon = weatherEmoji(condition);
+
+                    document.getElementById('weather').textContent = `${icon} ${temp}°C ${condition}`;
+                })
+                .catch(err => {
+                    console.error("Weather error:", err);
+                    document.getElementById('weather').textContent = '☁️ Weather unavailable';
+                });
+        });
+    } else {
+        document.getElementById('weather').textContent = '🌍 Location unavailable';
+    }
+
+    function weatherEmoji(condition) {
+        const icons = {
+            Clear: "☀️",
+            Clouds: "☁️",
+            Rain: "🌧️",
+            Drizzle: "🌦️",
+            Thunderstorm: "⛈️",
+            Snow: "❄️",
+            Mist: "🌫️",
+            Smoke: "🌫️",
+            Haze: "🌫️",
+            Dust: "🌬️",
+            Fog: "🌫️",
+            Sand: "🌬️",
+            Ash: "🌋",
+            Squall: "🌬️",
+            Tornado: "🌪️"
+        };
+        return icons[condition] || "🌡️";
+    }
+});
+const container = document.querySelector('.circular-progress-78');
+const circle = container.querySelector('.progress-ring__circle');
+const percentageDisplay = container.querySelector('#percentage');
+
+const radius = 78;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = circumference;
+
+function setProgress(percent) {
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+  percentageDisplay.textContent = `${percent}%`;
+}
+
+const rangeInput = document.getElementById('rangeInput');
+rangeInput.addEventListener('input', () => {
+  setProgress(rangeInput.value);
+});
+
+setProgress(rangeInput.value);
+
+
+    </script>
 </body>
 </html>

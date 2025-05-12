@@ -111,6 +111,7 @@ nav a.active, nav a:hover {
 .infostock span{
     display: flex;
     justify-content: space-between;
+    margin-top: 4px;
 }
 
 .addcage {
