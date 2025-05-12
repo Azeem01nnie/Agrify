@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Dynamically populate the profile details
                     document.getElementById("fullName").textContent = data.data.full_name;
                     document.getElementById("address").textContent = data.data.address;
-                    document.getElementById("dob").textContent = formatDate(data.data.dob); // Format DOB if necessary
+                    document.getElementById("dob").textContent = formatDate(data.data.dob); 
+
+                    document.querySelector(".profile-card .left h3").textContent = data.data.full_name;
                 }
             })
             .catch(error => {
