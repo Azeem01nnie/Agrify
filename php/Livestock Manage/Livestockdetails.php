@@ -125,7 +125,6 @@
             <!-- Sales Chart -->
             <section class="chart-section">
                 <h2>Livestock Sales</h2>
-<<<<<<< HEAD
                 <section class="chart-section">
                 <h2>Livestock Sales</h2>
                 <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
@@ -155,9 +154,7 @@ new Chart("myChart", {
 });
 </script>
             </section>
-=======
                 <canvas id="salesChart"></canvas>
->>>>>>> 8d642e575b5bb9688771aeea9ddb566c5ffae553
             </section>
         </main>
     </div>
