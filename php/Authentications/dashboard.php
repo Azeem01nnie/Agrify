@@ -12,7 +12,7 @@
 <style>
     .sidebar {
     width: 250px;
-    background: #4CAF50;
+    background: #40513B;
     color: white;
     padding: 20px;
     text-align: center;
@@ -28,38 +28,85 @@
 }
 </style>
 <body>
-    <div class="dashboard">
-        <div class="burger-menu">
-            <div></div>
-            <div></div>
-            <div></div>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <img src="/agrify/icons/logo.svg" alt="Library Logo">
         </div>
-      
-        <aside class="sidebar">
-      <h1 class="logo">AGRIFY</h1>
-      <img src="" style="opacity: 0.5;" class="profile-img"/>
-      <p class="username"><?php 
+        <p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
                 }?> | Admin</p>
-      <nav class="nav">
-        <a href="../php/Authentications/dashboard.php" class="active">Home</a>
-        <a href="../Livestock%20Manage/Livestockdetails.php">Livestock Details</a>
-        <a href="../addanimals/index.php">Cages</a>
-        <a href="#">Settings</a>
-      </nav>
-    </aside>
+        <div class="menu">
+            <a href="../Authentications/dashboard.php" class="active">
+                <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
+                Dashboard
+            </a>
+            <a href="../Livestock%20Manage/Livestockdetails.php">
+                <img src="/agrify/icons/details.png" alt="Livestock Details">
+                Livestock Details
+            </a>
+            <a href="../addanimals/index.php">
+                <img src="/agrify/icons/cages.png" alt="Cages">
+                Cages
+            </a>
+            <a href="../addanimals/index.php">
+                <img src="/agrify/icons/setting.png" alt="Settings">
+                Settings
+            </a>
+        </div>
+        <div class="footer-sidebar">
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Terms & condition</a>
+        </div>
+    </div>
 
-    <div class="main">
-        <main class="content">
-            <header>
-                <h1>Home <span id="weather">Loading weather...</span></h1>
-                <a href="/agrify/addanimals/index.php" class="addcage"><button>+ Add Cage</button></a>
-                <a href="login.php" class="logout"><button>Logout</button></a>
-            </header>
+    <div class="main-content">
+            <div class="topbar">
+            <div class="user-info">
+                <img src="/agrify/icons/Profile.svg" alt="Profile">
+                <div class="user-details">
+                    <div class="user-name"><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?></div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+            <div class="logout">
+                <button class="menu-button">
+                    <img src="/agrify/icons/logout.svg" alt="Menu">
+                </button>
+                <div class="dropdown-menu">
+                    <div class="menu-item">
+                        <img src="/agrify/icons/Profile (2).svg" alt="Profile">
+                        <span>Profile</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/accountsett.svg" alt="Account Settings">
+                        <span>Account Settings</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/languageicon.svg" alt="Language">
+                        <span>Language</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/darktheme.svg" alt="Dark Theme">
+                        <span>Dark Theme</span>
+                    </div>
+                    <div class="menu-item logout-option">
+                        <img src="/agrify/icons/logout.svg" alt="Log Out">
+                        <span>Log Out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="content">
             <div id="cages" class="cages">
                 <div class="cage">CAGE 1</div>
                 <div class="cage">CAGE 2 CHICKEN</div>
@@ -112,38 +159,38 @@
                 </div>
             </section>
              </div>
-            </div>
+    </div>
 
             <!-- Sales Chart -->
             <section class="chart-section">
                 <h2>Livestock Sales</h2>
                 <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
 
-<script>
-var xValues = ["2021", "2022", "2023", "2024", "2025"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["#4CAF50", "#4CAF50","#4CAF50","#4CAF50","#4CAF50"];
+                        <script>
+                        var xValues = ["2021", "2022", "2023", "2024", "2025"];
+                        var yValues = [55, 49, 44, 24, 15];
+                        var barColors = ["#4CAF50", "#4CAF50","#4CAF50","#4CAF50","#4CAF50"];
 
-new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      lineTension: 0,
-      backgroundColor: "#4CAF50",
-      borderColor: "#4CAF50",
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "Livestock Graph"
-    }
-  }
-});
-</script>
+                        new Chart("myChart", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                            lineTension: 0,
+                            backgroundColor: "#4CAF50",
+                            borderColor: "#4CAF50",
+                            data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: {display: false},
+                            title: {
+                            display: true,
+                            text: "Livestock Graph"
+                            }
+                        }
+                        });
+                        </script>
             </section>
         </main>
     </div>
