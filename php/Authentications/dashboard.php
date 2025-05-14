@@ -47,7 +47,7 @@
                 <img src="/agrify/icons/details.png" alt="Livestock Details">
                 Livestock Details
             </a>
-            <a href="../addanimals/index.php">
+            <a href="/agrify/addanimals/index.php">
                 <img src="/agrify/icons/cages.png" alt="Cages">
                 Cages
             </a>
@@ -253,5 +253,6 @@
     });
     </script>
     <script src="timecheck.js"></script>
+    <script src="datalink.js"></script>
 </body>
 </html>
