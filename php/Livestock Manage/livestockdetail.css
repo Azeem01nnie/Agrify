@@ -32,7 +32,6 @@ body {
 
 .logo-container {
     padding: 0 2rem;
-    margin-bottom: 3rem;
 }
 
 .logo-container img {
@@ -42,6 +41,7 @@ body {
 
 .menu {
     flex-grow: 1;
+    margin-top: 1rem;
 }
 
 .menu a {

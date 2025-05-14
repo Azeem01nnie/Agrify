@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +27,7 @@
 
 }
 </style>
+
 <body>
     <div class="sidebar" id="sidebar">
         <div class="logo-container">
