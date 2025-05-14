@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agrify - Farm Livestock Marketplace</title>
+  <link rel="stylesheet" href="agrifystyle.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Aspect ratio utility for embedded video */
@@ -24,19 +25,27 @@
 <body class="bg-white text-gray-800">
 
   <!-- Navbar -->
-  <header class="bg-green-700 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Agrify</h1>
-      <nav>
-        <ul class="flex space-x-6 text-lg">
-          <li><a href="/php/Livestock Manage/LandingPage.html" class="hover:underline">Home</a></li>
-          <li><a href="/php/Livestock Manage/newlogin.html" class="hover:underline">Marketplace</a></li>
-          <li><a href="/php/Livestock Manage/about.html" class="hover:underline">About</a></li>
-          <li><a href="/php/Livestock Manage/contact.html" class="hover:underline">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <header>
+  <div class="container">
+    <h1 class="logo">Agrify</h1>
+    
+    <!-- Hamburger Icon -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      &#9776;
+    </button>
+
+    <!-- Navigation Links -->
+    <nav id="navMenu" class="nav-links">
+      <ul>
+        <li><a href="LandingPage.html">Home</a></li>
+        <li><a href="newlogin.html">Marketplace</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Hero Section -->
   <section class="bg-green-50 py-16">
@@ -100,7 +109,7 @@
   <section class="bg-green-700 py-16 text-white text-center">
     <div class="max-w-4xl mx-auto px-4">
       <h3 class="text-3xl font-bold mb-4">Join Agrify Today</h3>
-      <p class="mb-8 text-lg">Start browsing, buying, or selling livestock now on the most trusted online marketplace for farmers.</p>
+      <p class="start">Start browsing, buying, or selling livestock now on the most trusted online marketplace for farmers.</p>
       <a href="#" class="bg-white text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Get Started</a>
     </div>
   </section>
@@ -115,6 +124,16 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+</script>
+
 
 </body>
 </html>

@@ -4,24 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - Agrify</title>
+  <link rel="stylesheet" href="agrifystyle.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-800">
 
   <!-- Navbar -->
-  <header class="bg-green-700 text-white">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Agrify</h1>
-      <nav>
-        <ul class="flex space-x-6 text-lg">
-          <li><a href="LandingPage.html" class="hover:underline">Home</a></li>
-          <li><a href="newlogin.html" class="hover:underline">Marketplace</a></li>
-          <li><a href="about.html" class="hover:underline">About</a></li>
-          <li><a href="contact.html" class="underline font-semibold">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <header>
+  <div class="container">
+    <h1 class="logo">Agrify</h1>
+    
+    <!-- Hamburger Icon -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      &#9776;
+    </button>
+
+    <!-- Navigation Links -->
+    <nav id="navMenu" class="nav-links">
+      <ul>
+        <li><a href="LandingPage.html">Home</a></li>
+        <li><a href="newlogin.html">Marketplace</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Contact Header -->
   <section class="bg-green-50 py-16 text-center">
@@ -91,6 +100,16 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+</script>
+
 
 </body>
 </html>
