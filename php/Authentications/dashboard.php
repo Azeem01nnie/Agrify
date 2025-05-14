@@ -115,6 +115,21 @@
         </div>
 
         <div class="content">
+            <div class="welcome-section">
+                <div class="profile-welcome">
+                    <img src="/agrify/icons/Profile.svg" alt="Profile">
+                    <div class="welcome-text">
+                        <h1>Hello, <?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?>!</h1>
+                        <div id="date-time" class="date-time-display"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="stats-cards">
                 <div class="stat-card" data-link="add_animal.php">
                         <p>Cage: Name(1)</p>
@@ -237,5 +252,6 @@
         });
     });
     </script>
+    <script src="timecheck.js"></script>
 </body>
 </html>

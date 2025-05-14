@@ -136,6 +136,32 @@ body {
     height: calc(100vh - 64px); 
 }
 
+.welcome-section {
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-welcome {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-welcome img{
+    width: 100px;
+}
+
+.welcome-text h1 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.welcome-text p {
+    color: #666;
+}
 
 .stats-cards {
     display: grid;

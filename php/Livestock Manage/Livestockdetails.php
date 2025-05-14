@@ -7,37 +7,111 @@
     <link rel="stylesheet" href="../Livestock Manage/livestockdetail.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<style>
+    .sidebar {
+    width: 250px;
+    background: #40513B;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+
+}
+</style>
 <body>
-    <div class="dashboard">
-      
-    <aside class="sidebar">
-      <h1 class="logo">AGRIFY</h1>
-       <div class="profile">
-                <a href="../../profilePage/profilePage.php">
-                    <img src="profile.png" alt="Profile" />
-                </a>
-                <p><?php 
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <img src="/agrify/icons/logo.svg" alt="Library Logo">
+        </div>
+        <p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?>
-            <span>Admin</span></p>
+                }?> | Admin</p>
+        <div class="menu">
+            <a href="../Authentications/dashboard.php" class="active">
+                <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
+                Dashboard
+            </a>
+            <a href="../Livestock%20Manage/Livestockdetails.php">
+                <img src="/agrify/icons/details.png" alt="Livestock Details">
+                Livestock Details
+            </a>
+            <a href="../addanimals/index.php">
+                <img src="/agrify/icons/cages.png" alt="Cages">
+                Cages
+            </a>
+            <a href="../addanimals/index.php">
+                <img src="/agrify/icons/setting.png" alt="Settings">
+                Settings
+            </a>
         </div>
-      <nav class="nav">
-        <a href="../Authentications/dashboard.php">Home</a>
-        <a href="../php/Livestock%20Manage/Livestockdetails.php" class="active">Livestock Details</a>
-        <a href="../addanimals/index.php">Cages</a>
-        <a href="#">Settings</a>
-      </nav>
-    </aside>
+        <div class="footer-sidebar">
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Terms & condition</a>
+        </div>
+    </div>
 
-    <div class="main">
-        <main class="content">
-            <header>
-                <h1 class="ld">Livestock Details <span id="weather">Loading weather...</span></h1>
-                <a href="login.php" class="logout"><button>Logout</button></a>
-            </header>
+    <div class="main-content">
+            <div class="topbar">
+            <div class="user-info">
+                <img src="/agrify/icons/Profile.svg" alt="Profile">
+                <div class="user-details">
+                    <div class="user-name"><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?></div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+
+            <div class="logout">
+                <button class="menu-button">
+                    <img src="/agrify/icons/cages.png" alt="AddCage">
+                    <span> Add Cage</span>
+                </button>
+            </div>
+
+            <div class="logout">
+                <button class="menu-button">
+                    <img src="/agrify/icons/logout.svg" alt="Menu">
+                </button>
+                <div class="dropdown-menu">
+                    <div class="menu-item">
+                        <img src="/agrify/icons/Profile (2).svg" alt="Profile">
+                        <span>Profile</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/accountsett.svg" alt="Account Settings">
+                        <span>Account Settings</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/languageicon.svg" alt="Language">
+                        <span>Language</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/darktheme.svg" alt="Dark Theme">
+                        <span>Dark Theme</span>
+                    </div>
+                    <div class="menu-item logout-option">
+                        <img src="/agrify/icons/logout.svg" alt="Log Out">
+                        <span>Log Out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
             <div class="cont">
             <div class="stock">
                 <section class="livestock">
