@@ -42,11 +42,11 @@ require_once '../php/Config/database.php';
                     echo "Guest";
                 }?> | Admin</p>
         <div class="menu">
-            <a href="../Authentications/dashboard.php">
+            <a href="/agrify/php/Authentications/dashboard.php">
                 <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
                 Dashboard
             </a>
-            <a href="../php/Livestock%20Manage/Livestockdetails.php">
+            <a href="/agrify/php/Livestock%20Manage/Livestockdetails.php">
                 <img src="/agrify/icons/details.png" alt="Livestock Details">
                 Livestock Details
             </a>
@@ -54,7 +54,7 @@ require_once '../php/Config/database.php';
                 <img src="/agrify/icons/cages.png" alt="Cages">
                 Cages
             </a>
-            <a href="../profilePage/profilePage.php">
+            <a href="/agrify/profilePage/profilePage.php">
                 <img src="/agrify/icons/setting.png" alt="Settings">
                 Settings
             </a>

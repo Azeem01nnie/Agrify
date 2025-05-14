@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrify Dashboard</title>
     <link rel="stylesheet" href="../Livestock Manage/livestockdetail.css">
+    <link rel="stylesheet" href="/agrify/php/Authentications/modalstyle.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <style>
@@ -40,19 +41,19 @@
                     echo "Guest";
                 }?> | Admin</p>
         <div class="menu">
-            <a href="../Authentications/dashboard.php">
+            <a href="/agrify/php/Authentications/dashboard.php">
                 <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
                 Dashboard
             </a>
-            <a href="../Livestock%20Manage/Livestockdetails.php" class="active">
+            <a href="/agrify/php/Livestock%20Manage/Livestockdetails.php" class="active">
                 <img src="/agrify/icons/details.png" alt="Livestock Details">
                 Livestock Details
             </a>
-            <a href="../addanimals/index.php">
+            <a href="/agrify/addanimals/index.php">
                 <img src="/agrify/icons/cages.png" alt="Cages">
                 Cages
             </a>
-            <a href="../addanimals/index.php">
+            <a href="/agrify/profilePage/profilePage.php">
                 <img src="/agrify/icons/setting.png" alt="Settings">
                 Settings
             </a>
@@ -229,13 +230,31 @@ new Chart("myChart", {
     }
   }
 });
-</script>
+    </script>
             </section>
                 <canvas id="salesChart"></canvas>
             </section>
         </main>
     </div>
     </div>
+
+     <div id="logoutModal" class="viewmodal" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="modal-content2">
+            <img src="/images/logov4.svg" class="modal-logo">
+            <div class="modal-header">
+                <h2>Logout Confirmation</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to log out?</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modalbtn proceed" id="confirmLogout">Yes</button>
+                <button class="modalbtn close">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="modals.js"></script>
     <script src="livestockdet.js"></script>
 </body>
 </html>
