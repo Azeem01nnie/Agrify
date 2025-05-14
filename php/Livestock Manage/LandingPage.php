@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="agrifystyle.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Aspect ratio utility for embedded video */
     .aspect-w-16 {
       position: relative;
       width: 100%;
@@ -37,10 +36,10 @@
     <!-- Navigation Links -->
     <nav id="navMenu" class="nav-links">
       <ul>
-        <li><a href="LandingPage.html">Home</a></li>
-        <li><a href="newlogin.html">Marketplace</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="LandingPage.php">Home</a></li>
+        <li><a href="newlogin.php">Marketplace</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -52,7 +51,7 @@
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-green-800">Buy & Sell Livestock with Ease</h2>
       <p class="text-xl mb-8 text-gray-700">Agrify is your trusted marketplace for farm animals — connecting buyers and sellers across the country.</p>
-      <a href="#" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg hover:bg-green-800 transition">Browse Marketplace</a>
+      <a href="/agrify/php/Livestock%20Manage/newlogin.php" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg hover:bg-green-800 transition">Browse Marketplace</a>
     </div>
   </section>
 
@@ -62,17 +61,17 @@
       <h3 class="text-3xl font-bold mb-12">Why Choose Agrify?</h3>
       <div class="grid md:grid-cols-3 gap-12">
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-sheep-96.png" alt="Cow Icon" class="mx-auto mb-4" />
+          <img src="/agrify/php/Livestock Manage/iconss/icons8-sheep-96.png" alt="Cow Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Wide Selection</h4>
           <p>Choose from cows, goats, chickens, pigs, and more from trusted farms.</p>
         </div>
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-money-bag-96.png" alt="Money Icon" class="mx-auto mb-4" />
+          <img src="/agrify//php/Livestock Manage/iconss/icons8-money-bag-96.png" alt="Money Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Fair Pricing</h4>
           <p>Compare prices from different sellers and find the best deals.</p>
         </div>
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-secure-100.png" alt="Trust Icon" class="mx-auto mb-4" />
+          <img src="/agrify//php/Livestock Manage/iconss/icons8-secure-100.png" alt="Trust Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Secure Transactions</h4>
           <p>We help ensure both buyer and seller satisfaction through secure deals.</p>
         </div>
@@ -110,7 +109,7 @@
     <div class="max-w-4xl mx-auto px-4">
       <h3 class="text-3xl font-bold mb-4">Join Agrify Today</h3>
       <p class="start">Start browsing, buying, or selling livestock now on the most trusted online marketplace for farmers.</p>
-      <a href="#" class="bg-white text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Get Started</a>
+      <a href="/agrify/php/Livestock%20Manage/newlogin.php" class="bg-white text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Get Started</a>
     </div>
   </section>
 
