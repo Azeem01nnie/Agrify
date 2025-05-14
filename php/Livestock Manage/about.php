@@ -19,7 +19,6 @@
       &#9776;
     </button>
 
-    <!-- Navigation Links -->
     <nav id="navMenu" class="nav-links">
       <ul>
         <li><a href="LandingPage.php">Home</a></li>
@@ -31,8 +30,6 @@
   </div>
 </header>
 
-
-  <!-- Hero Section -->
   <section class="bg-green-50 py-16 text-center">
     <h2 class="text-4xl font-extrabold text-green-800 mb-4">About Agrify</h2>
     <p class="text-lg text-gray-700 max-w-3xl mx-auto">Agrify is a farm livestock website that caters to both users and farms 
@@ -41,7 +38,6 @@
         traders, and businesses to browse, compare, and purchase animals directly from trusted sources.</p>
   </section>
 
-  <!-- Mission & Vision -->
   <section class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
       <div>
