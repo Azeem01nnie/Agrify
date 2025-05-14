@@ -187,22 +187,11 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.addcage {
-    padding: 10px 15px;
-    border-radius: 5px;
-}
-
-.addcage button {
-    background: #4CAF50;
-    padding: 10px 13px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    margin-left: 600px;
-}
-
-.addcage button:hover {
-    background: #45a049;
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
 .logout {
@@ -251,6 +240,12 @@ body {
 
 .progress span {
     width: 80px;
+}
+
+.finance, .stock, .cont {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .bar {

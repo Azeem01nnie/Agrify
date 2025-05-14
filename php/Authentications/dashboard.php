@@ -117,7 +117,7 @@
         <div class="content">
             <div class="welcome-section">
                 <div class="profile-welcome">
-                    <img src="/agrify/icons/Profile.svg" alt="Profile">
+                    <img src="/agrify/icons/Profile 1.svg" alt="Profile">
                     <div class="welcome-text">
                         <h1>Hello, <?php 
                 if (isset($_SESSION['username'])) {
@@ -157,6 +157,7 @@
                 </div>
             </div>
 
+            <div class="dashboard-grid">
             <div class="cont">
             <div class="stock">
                 <section class="livestock">
