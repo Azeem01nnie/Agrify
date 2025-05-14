@@ -245,7 +245,6 @@
         const content = document.querySelector('.content');
 
         burgerMenu.addEventListener('click', function() {
-            console.log('Burger menu clicked'); // Debugging line
             sidebar.classList.toggle('active');
             burgerMenu.classList.toggle('active');
             content.classList.toggle('sidebar-active');
