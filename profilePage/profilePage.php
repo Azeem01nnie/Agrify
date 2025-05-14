@@ -11,32 +11,105 @@ session_start();
   <link rel="stylesheet" href="profileStyle.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="burger-menu">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h1 class="logo">AGRIFY</h1>
-      <div class="spacing"><p class="username"><?php 
+  <style>
+    .sidebar {
+    width: 250px;
+    background: #40513B;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+
+}
+</style>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <img src="/agrify/icons/logo.svg" alt="Library Logo">
+        </div>
+        <p class="username"><?php 
                 if (isset($_SESSION['username'])) {
                     echo htmlspecialchars($_SESSION['username']);
                 } else {
                     echo "Guest";
-                }?> | Admin</p></div>
+                }?> | Admin</p>
+        <div class="menu">
+            <a href="../Authentications/dashboard.php">
+                <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
+                Dashboard
+            </a>
+            <a href="../php/Livestock%20Manage/Livestockdetails.php">
+                <img src="/agrify/icons/details.png" alt="Livestock Details">
+                Livestock Details
+            </a>
+            <a href="/agrify/addanimals/index.php">
+                <img src="/agrify/icons/cages.png" alt="Cages">
+                Cages
+            </a>
+            <a href="../profilePage/profilePage.php" class="active">
+                <img src="/agrify/icons/setting.png" alt="Settings">
+                Settings
+            </a>
+        </div>
+        <div class="footer-sidebar">
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Terms & condition</a>
+        </div>
+    </div>
 
-      <nav class="nav">
-        <a href="../php/Authentications/dashboard.php">Home</a>
-        <a href="#">livestock Details</a>
-        <a href="../addanimals/index.php">Cages</a>
-        <a href="#">Settings</a>
-      </nav>
-    </aside>
+    <div class="main-content">
+            <div class="topbar">
+            <div class="user-info">
+                <img src="/agrify/icons/Profile.svg" alt="Profile">
+                <div class="user-details">
+                    <div class="user-name"><?php 
+                if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                } else {
+                    echo "Guest";
+                }?></div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+            
+            <div class="logout">
+                <button class="menu-button">
+                    <img src="/agrify/icons/logout.svg" alt="Menu">
+                </button>
+                <div class="dropdown-menu">
+                    <div class="menu-item">
+                        <img src="/agrify/icons/Profile (2).svg" alt="Profile">
+                        <span>Profile</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/accountsett.svg" alt="Account Settings">
+                        <span>Account Settings</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/languageicon.svg" alt="Language">
+                        <span>Language</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/agrify/icons/darktheme.svg" alt="Dark Theme">
+                        <span>Dark Theme</span>
+                    </div>
+                    <div class="menu-item logout-option">
+                        <img src="/agrify/icons/logout.svg" alt="Log Out">
+                        <span>Log Out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
+      <div class="content">
       <h2>Profile Information</h2>
       <div class="profile-card">
         <div class="left">
