@@ -42,9 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="container">
     <div class="illustration">
-        <img src="../php/Livestock%20Manage/iconss/polpol.jpg" type="image/png" center>
+        <img src="/agrify/php/Livestock%20Manage/iconss/polpol.jpg" alt="Illustration">
       </div>
     <div class="login-section">
+            <?php if ($error): ?>
+            <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
       <div class="logo">Agrify</div>
       <div class="title" style="color: #4c7c4c;">Login To Get Started</div>
       <form action="#" method="POST">
