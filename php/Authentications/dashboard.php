@@ -77,6 +77,14 @@
                     <div class="user-role">Admin</div>
                 </div>
             </div>
+
+            <div class="logout">
+                <button class="menu-button">
+                    <img src="/agrify/icons/cages.png" alt="AddCage">
+                    <span> Add Cage</span>
+                </button>
+            </div>
+
             <div class="logout">
                 <button class="menu-button">
                     <img src="/agrify/icons/logout.svg" alt="Menu">
@@ -107,11 +115,33 @@
         </div>
 
         <div class="content">
-            <div id="cages" class="cages">
-                <div class="cage">CAGE 1</div>
-                <div class="cage">CAGE 2 CHICKEN</div>
-                <div class="cage">CAGE 3</div>
+            <div class="stats-cards">
+                <div class="stat-card" data-link="add_animal.php">
+                        <p>Cage: Name(1)</p>
+                    <div class="stat-info">
+                        <h3>230</h3>
+                    </div>
+                </div>
+                <div class="stat-card" data-link="add_animal.php">
+                        <p>Cage: Name(2)</p>
+                    <div class="stat-info">
+                        <h3>90</h3>
+                    </div>
+                </div>
+                <div class="stat-card" data-link="add_animal.php">
+                        <p>Cage: Name(3)</p>
+                    <div class="stat-info">
+                        <h3>20</h3>
+                    </div>
+                </div>
+                <div class="stat-card" data-link="add_animal.php">
+                        <p>Cage: Name(1)</p>
+                    <div class="stat-info">
+                        <h3>36</h3>
+                    </div>
+                </div>
             </div>
+
             <div class="cont">
             <div class="stock">
                 <section class="livestock">
@@ -148,9 +178,6 @@
                           <div id="percentage">78%</div>
                         </div>
                       </div>
-                      
-                      
-                      
                       
                 <div class="expect">
                 <p>Expected Profit: <strong>700,000.00</strong></p>
