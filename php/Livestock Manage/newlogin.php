@@ -1,3 +1,35 @@
+<?php
+session_start();
+require_once '../Config/database.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if (!empty($username) && !empty($password)) {
+        $stmt = $pdo->prepare("SELECT user_id, username, password, role FROM users WHERE username = :username LIMIT 1");
+        $stmt->execute(['username' => $username]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+
+            
+            header("Location: ../Authentications/dashboard.php");
+            exit;
+        } else {
+            $error = 'Invalid username or password.';
+        }
+    } else {
+        $error = 'Please enter both username and password.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +42,7 @@
 <body>
   <div class="container">
     <div class="illustration">
-        <img src="/php/Livestock Manage/iconss/polpol.jpg" type="image/png" center>
+        <img src="../php/Livestock%20Manage/iconss/polpol.jpg" type="image/png" center>
       </div>
     <div class="login-section">
       <div class="logo">Agrify</div>
@@ -22,7 +54,7 @@
         <div class="or">OR</div>
       
         <div class="signup">
-          Don’t have an account? <a href="#">Sign Up</a>
+          Don’t have an account? <a href="/agrify/register/regform.php">Sign Up</a>
         </div>
         <div class="terms">
           By signing in, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, including <a href="#">cookie use</a>.
