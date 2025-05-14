@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="agrifystyle.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Aspect ratio utility for embedded video */
     .aspect-w-16 {
       position: relative;
       width: 100%;
@@ -62,17 +61,17 @@
       <h3 class="text-3xl font-bold mb-12">Why Choose Agrify?</h3>
       <div class="grid md:grid-cols-3 gap-12">
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-sheep-96.png" alt="Cow Icon" class="mx-auto mb-4" />
+          <img src="/agrify/php/Livestock Manage/iconss/icons8-sheep-96.png" alt="Cow Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Wide Selection</h4>
           <p>Choose from cows, goats, chickens, pigs, and more from trusted farms.</p>
         </div>
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-money-bag-96.png" alt="Money Icon" class="mx-auto mb-4" />
+          <img src="/agrify//php/Livestock Manage/iconss/icons8-money-bag-96.png" alt="Money Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Fair Pricing</h4>
           <p>Compare prices from different sellers and find the best deals.</p>
         </div>
         <div>
-          <img src="/php/Livestock Manage/iconss/icons8-secure-100.png" alt="Trust Icon" class="mx-auto mb-4" />
+          <img src="/agrify//php/Livestock Manage/iconss/icons8-secure-100.png" alt="Trust Icon" class="mx-auto mb-4" />
           <h4 class="text-xl font-semibold mb-2">Secure Transactions</h4>
           <p>We help ensure both buyer and seller satisfaction through secure deals.</p>
         </div>

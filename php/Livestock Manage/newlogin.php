@@ -44,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="illustration">
         <img src="/agrify/php/Livestock%20Manage/iconss/polpol.jpg" alt="Illustration">
       </div>
-    <div class="login-section">
-            <?php if ($error): ?>
+      <div class="login-section">
+        <?php if ($error): ?>
             <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
       <div class="logo">Agrify</div>
