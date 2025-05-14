@@ -22,10 +22,10 @@
     <!-- Navigation Links -->
     <nav id="navMenu" class="nav-links">
       <ul>
-        <li><a href="LandingPage.html">Home</a></li>
-        <li><a href="newlogin.html">Marketplace</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="LandingPage.php">Home</a></li>
+        <li><a href="newlogin.php">Marketplace</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -48,7 +48,7 @@
         <h3 class="text-3xl font-bold mb-4">Our Mission</h3>
         <p class="text-gray-700 text-lg leading-relaxed">Agrify empowers local farmers and buyers by creating a digital space where livestock can be traded with confidence. We aim to simplify farm-to-fork livestock trading with fair pricing, transparency, and trust.</p>
       </div>
-      <img src="/php/Livestock Manage/iconss/polpol.jpg" alt="Farmers with livestock" class="rounded-lg shadow-lg"/>
+      <img src="/agrify/php/Livestock Manage/iconss/polpol.jpg" alt="Farmers with livestock" class="rounded-lg shadow-lg"/>
     </div>
   </section>
 
@@ -79,27 +79,27 @@
     <h3 class="text-3xl font-bold mb-12">Meet the Team</h3>
     <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-4">
       <div>
-        <img src="/php/Livestock Manage/iconss/profile1.jpg" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/profile1.jpg" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">John Lloyd Climaco</h4>
         <p class="text-gray-600">Backend Developer</p>
       </div>
       <div>
-        <img src="/php/Livestock Manage/iconss/profile5.jpg" alt="Eric Libradilla jr" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/profile5.jpg" alt="Eric Libradilla jr" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">Eric Libradilla jr</h4>
         <p class="text-gray-600">Frontend Developer</p>
       </div>
       <div>
-        <img src="/php/Livestock Manage/iconss/profile4.jpg" alt="Mohammad Azeem Abdu" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/profile4.jpg" alt="Mohammad Azeem Abdu" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">Mohammad Azeem S. Abdu</h4>
         <p class="text-gray-600">UX Designer</p>
       </div>
       <div>
-        <img src="/php/Livestock Manage/iconss/profile2.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/profile2.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">Dharelle Ebol</h4>
         <p class="text-gray-600">Frontend Developer</p>
       </div>
       <div>
-        <img src="/php/Livestock Manage/iconss/profile3.jpg" alt="Justin James Alviar" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/profile3.jpg" alt="Justin James Alviar" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">Justin James Alviar</h4>
         <p class="text-gray-600">Frontend Developer</p>
       </div>
@@ -111,7 +111,7 @@
     <div class="max-w-3xl mx-auto px-4">
       <h3 class="text-3xl font-bold mb-4">Ready to Buy or Sell Livestock?</h3>
       <p class="start">Join thousands of farmers and buyers across the country. Start trading livestock the smart way.</p>
-      <a href="marketplace.html" class="bg-white text-green-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Visit Marketplace</a>
+      <a href="marketplace.php" class="bg-white text-green-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Visit Marketplace</a>
     </div>
   </section>
 
