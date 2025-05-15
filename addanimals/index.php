@@ -46,10 +46,6 @@ require_once '../php/Config/database.php';
                 <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
                 Dashboard
             </a>
-            <a href="/agrify/php/Livestock%20Manage/Livestockdetails.php">
-                <img src="/agrify/icons/details.png" alt="Livestock Details">
-                Livestock Details
-            </a>
             <a href="/agrify/addanimals/index.php" class="active">
                 <img src="/agrify/icons/cages.png" alt="Cages">
                 Cages

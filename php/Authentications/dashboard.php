@@ -1,4 +1,18 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once '../Config/database.php';
+require_once 'DashboardCageManager.php'; // Adjust path if needed
+
+// Make sure user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect or show error if needed
+    die("User not logged in.");
+}
+
+$userId = $_SESSION['user_id'];
+$cageManager = new DashboardCageManager($pdo);
+$cageStats = $cageManager->getTopCagesWithAnimals($userId);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +57,6 @@
             <a href="/agrify/php/Authentications/dashboard.php" class="active">
                 <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
                 Dashboard
-            </a>
-            <a href="/agrify/php/Livestock%20Manage/Livestockdetails.php">
-                <img src="/agrify/icons/details.png" alt="Livestock Details">
-                Livestock Details
             </a>
             <a href="/agrify/addanimals/index.php">
                 <img src="/agrify/icons/cages.png" alt="Cages">
@@ -124,30 +134,23 @@
             </div>
 
             <div class="stats-cards">
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(1)</p>
+            <?php if (count($cageStats) === 0): ?>
+                <div class="stat-card">
+                    <p>No cages found</p>
                     <div class="stat-info">
-                        <h3>230</h3>
+                        <h3>0</h3>
                     </div>
                 </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(2)</p>
-                    <div class="stat-info">
-                        <h3>90</h3>
-                    </div>
-                </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(3)</p>
-                    <div class="stat-info">
-                        <h3>20</h3>
-                    </div>
-                </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(1)</p>
-                    <div class="stat-info">
-                        <h3>36</h3>
-                    </div>
-                </div>
+            <?php else: ?>
+                    <?php foreach ($cageStats as $cage): ?>
+                        <div class="stat-card" data-link="add_animal.php">
+                            <p>Cage: <?php echo htmlspecialchars($cage['cage_name']); ?></p>
+                            <div class="stat-info">
+                                <h3><?php echo htmlspecialchars($cage['animal_count']); ?></h3>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
 
             <div class="dashboard-grid">
@@ -172,24 +175,30 @@
                     </div>
                 </section>
              </div>
+
             <div class="finance">
             <section class="financial">
                 <h2>Financial Statistics</h2>
                 <div class="flex">
-                    <div class="circular-progress-78">
-                        <svg class="progress-ring" width="250" height="250">
-                          <circle class="progress-ring__background" cx="135" cy="105" r="100" />
-                          <circle class="progress-ring__circle" cx="135" cy="105" r="100" />
-                        </svg>
-                        <div class="progress-text">
-                          <div class="label">Achieved</div>
-                          <div id="percentage">78%</div>
+                    <div class="circular-progress-wrapper">
+                        <canvas id="profitChart"></canvas>
+                        <div class="progress-text-overlay">
+                            <div class="label">Achieved</div>
+                            <div id="percentage">0%</div>
                         </div>
-                      </div>
+                    </div>
+                    
                       
                 <div class="expect">
-                <p>Expected Profit: <strong>700,000.00</strong></p>
-                <p>Current Profit: <strong>150,000.00</strong></p>
+                    <div class="input-section">
+                            <label for="currentProfit">Enter Current Profit: </label>
+                            <input type="number" id="currentProfit" placeholder="Enter amount" />
+                            <button onclick="updateChart()">Update Chart</button>
+                    </div>
+                        
+                    <div class="expect">
+                        <p>Expected Profit: <strong>700,000.00</strong></p>
+                    </div>
                </div>
                 </div>
             </section>
@@ -250,5 +259,64 @@
     <script src="modals.js"></script>
     <script src="timecheck.js"></script>
     <script src="datalink.js"></script>
+
+
+    <script>
+    // Set expected profit value
+    const expectedProfit = 700000;
+
+    // Initialize values
+    let currentProfit = 10;
+    let percentageAchieved = 0;
+
+    // Get chart context
+    const ctx = document.getElementById('profitChart').getContext('2d');
+
+    // Create the Chart.js doughnut chart
+    const profitChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Achieved', 'Remaining'],
+            datasets: [{
+                data: [percentageAchieved, 100 - percentageAchieved],
+                backgroundColor: ['#4CAF50', '#e0e0e0'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            cutout: '80%', // Use this instead of cutoutPercentage in Chart.js 3+
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: false
+                }
+            }
+        }
+    });
+
+    // Update function
+    function updateChart() {
+        const userInput = document.getElementById('currentProfit').value;
+        currentProfit = parseFloat(userInput);
+
+        if (isNaN(currentProfit) || currentProfit < 0) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        // Calculate percentage, clamp at 100
+        percentageAchieved = Math.min((currentProfit / expectedProfit) * 100, 100);
+
+        // Update chart data
+        profitChart.data.datasets[0].data = [percentageAchieved, 100 - percentageAchieved];
+        profitChart.update();
+
+        // Update text inside the doughnut
+        document.getElementById('percentage').innerText = percentageAchieved.toFixed(2) + '%';
+    }
+</script>
 </body>
 </html>
