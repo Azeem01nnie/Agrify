@@ -198,6 +198,32 @@ body {
 
 .right h3 {
   margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* Add spacing between profile details in the right section */
+.right b {
+    display: inline-block;
+    width: 120px; /* adjust as needed for alignment */
+    vertical-align: top;
+    font-size: 18px;
+}
+
+.right p,
+.right div {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.right span {
+    margin-bottom: 0;
+    display: inline;
+    font-size: 18px;
+}
+
+/* If you want to target only the details, you can use :not(:last-child) for spacing */
+.right b:not(:last-child) {
+    margin-bottom: 8px;
 }
 
 .edit-btn {
@@ -503,6 +529,24 @@ body {
 
 .menu-toggle.active {
     left: calc(var(--sidebar-width) + 20px);
+}
+
+/* Add spacing between profile info fields */
+.profile-info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-info .profile-field {
+    margin-bottom: 12px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* Optional: make the label bold for clarity */
+.profile-info .profile-label {
+    font-weight: 600;
+    margin-right: 6px;
 }
 
 /* Responsive Design */
