@@ -1,4 +1,18 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once '../Config/database.php';
+require_once 'DashboardCageManager.php'; // Adjust path if needed
+
+// Make sure user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect or show error if needed
+    die("User not logged in.");
+}
+
+$userId = $_SESSION['user_id'];
+$cageManager = new DashboardCageManager($pdo);
+$cageStats = $cageManager->getTopCagesWithAnimals($userId);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,30 +138,23 @@
             </div>
 
             <div class="stats-cards">
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(1)</p>
+            <?php if (count($cageStats) === 0): ?>
+                <div class="stat-card">
+                    <p>No cages found</p>
                     <div class="stat-info">
-                        <h3>230</h3>
+                        <h3>0</h3>
                     </div>
                 </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(2)</p>
-                    <div class="stat-info">
-                        <h3>90</h3>
-                    </div>
-                </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(3)</p>
-                    <div class="stat-info">
-                        <h3>20</h3>
-                    </div>
-                </div>
-                <div class="stat-card" data-link="add_animal.php">
-                        <p>Cage: Name(1)</p>
-                    <div class="stat-info">
-                        <h3>36</h3>
-                    </div>
-                </div>
+            <?php else: ?>
+                    <?php foreach ($cageStats as $cage): ?>
+                        <div class="stat-card" data-link="add_animal.php">
+                            <p>Cage: <?php echo htmlspecialchars($cage['cage_name']); ?></p>
+                            <div class="stat-info">
+                                <h3><?php echo htmlspecialchars($cage['animal_count']); ?></h3>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
 
             <div class="dashboard-grid">
