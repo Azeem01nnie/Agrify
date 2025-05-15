@@ -29,4 +29,24 @@ class MarketplaceManager {
             return [];
         }
     }
+
+    public function getAnimalById($id) {
+    try {
+        $query = "SELECT a.*, c.cage_name, c.cage_desc, u.username as owner_name 
+                  FROM animals a
+                  LEFT JOIN cages c ON a.cage_id = c.cage_id
+                  LEFT JOIN users u ON c.user_id = u.user_id
+                  WHERE a.animal_id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching animal details: " . $e->getMessage());
+        return null;
+    }
+}
+
 } 

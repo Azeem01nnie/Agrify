@@ -88,16 +88,8 @@ session_start();
             <span>Profile</span>
           </div>
           <div class="menu-item">
-            <img src="/agrify/icons/accountsett.svg" alt="Account Settings">
-            <span>Account Settings</span>
-          </div>
-          <div class="menu-item">
             <img src="/agrify/icons/languageicon.svg" alt="Language">
             <span>Language</span>
-          </div>
-          <div class="menu-item">
-            <img src="/agrify/icons/darktheme.svg" alt="Dark Theme">
-            <span>Dark Theme</span>
           </div>
           <div class="menu-item logout-option">
             <img src="/agrify/icons/logout.svg" alt="Log Out">

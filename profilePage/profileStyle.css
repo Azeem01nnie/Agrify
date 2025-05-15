@@ -148,11 +148,6 @@ body {
   display: block;
 }
 
-.username {
-  font-weight: bold;
-  margin: 5px 0;
-}
-
 .profile-card {
   display: flex;
   justify-content: space-between;

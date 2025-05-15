@@ -1,3 +1,22 @@
+<?php
+require_once '../Config/database.php';
+require_once 'MarketplaceManager.php';
+
+$animal = null;
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    try {
+        $pdo = new PDO("mysql:host=localhost;dbname=Agrify", 'root', '');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $marketplaceManager = new MarketplaceManager($pdo);
+        $animal = $marketplaceManager->getAnimalById($_GET['id']);
+
+    } catch (PDOException $e) {
+        error_log("Connection failed: " . $e->getMessage());
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,20 +24,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agrify</title>
   <link rel="stylesheet" href="description.css">
-
 </head>
 <body>
 
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">
-      <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
+      <a href="marketplace.php"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
-      <a href="#">Marketplace</a>
-      <a href="#">Cage</a>
-      <a href="#">Settings</a>
-      <a href="#">Logout</a>
-    </div>
+        <a href="#">Marketplace</a>
+        <a href="#">Cage</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+      </div>
     </div>
   </div>
 
@@ -29,61 +47,51 @@
 
   <!-- Product -->
   <div class="product-container">
-    <div class="product-image">
-      <img src="/php/marketplace/manoks2.png" alt="Logitech Mouse Pad">
-    </div>
-    <div class="product-details">
-      <h1>Chicken</h1>
-      <div class="price">
-        ₱100.00
+    <?php if ($animal): ?>
+      <div class="product-image">
+        <?php
+              $type = strtolower(trim($animal['animal_type'] ?? ''));
+              $defaultImages = [
+                  'goat' => 'images/goat.png',
+                  'cow' => 'images/cow.png',
+                  'chicken' => 'images/chicken.png',
+                  'duck' => 'images/duck.png',
+                  'horse' => 'images/horse.png',
+                  'goats' => 'images/goat.png',
+                  'cows' => 'images/cow.png',
+                  'chickens' => 'images/chicken.png',
+                  'ducks' => 'images/duck.png',
+                  'horses' => 'images/horse.png'
+              ];
+              $imagePath = $defaultImages[$type] ?? 'images/default-animal.png';
+              $animalId = htmlspecialchars($animal['animal_id'] ?? 0);
+            ?>
+        <img src="<?php echo htmlspecialchars($imagePath); ?>"
+                    alt="<?php echo htmlspecialchars($animal['animal_type'] ?? 'Animal'); ?>"
+                    onerror="this.src='images/default-animal.png'">
       </div>
-      <div class="info"><strong>Cage Description</strong></div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quam rem dolore possimus 
-        laborum esse eaque architecto suscipit nam laudantium laboriosam, 
-        maiores porro alias ea accusantium, reprehenderit deleniti voluptate delectus.</p>
-        <div class="info"><strong>Breedable: </strong>Yes</div>
-        <div class="info"><strong>Date of Birth: </strong>2023-04-06</div>
-      <div class="buttons">
-        <button class="buy-now">📱 Contact</button>
+      <div class="product-details">
+        <h1><?php echo htmlspecialchars($animal['animal_type']); ?></h1>
+        <div class="price">₱<?php echo htmlspecialchars($animal['price']); ?></div>
+        <div class="info"><strong>Cage Description</strong></div>
+        <p><?php echo htmlspecialchars($animal['cage_desc'] ?? 'No description available.'); ?></p>
+        <div class="info"><strong>Breedable: </strong><?php echo $animal['breedable'] ? 'Yes' : 'No'; ?></div>
+        <div class="info"><strong>Date of Birth: </strong><?php echo htmlspecialchars($animal['date_of_birth']); ?></div>
+        <div class="buttons">
+          <button class="buy-now">📱 Contact</button>
+        </div>
       </div>
-    </div>
+    <?php else: ?>
+      <p style="padding: 20px; font-size: 1.2em;">Animal not found or invalid ID.</p>
+    <?php endif; ?>
   </div>
+
   <!-- Contact Modal -->
-<div id="contactModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Contact Seller</h2>
-    <p>You can reach the seller at:</p>
-    <p><strong>📞 0912 345 6789</strong></p>
-    <p><strong>🛖 Baliawsan Grande Zamboanga City</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247.54991876727865!2d122.05571869418388!3d6.91465500806941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1747292162201!5m2!1sen!2sph" 
-    width="300" height="200" 
-    style="border:0;" allowfullscreen="" loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <p><strong>📧 agrify@gmail.com</strong></p>
-    <button onclick="closeModal()">Close</button>
-  </div>
-</div>
-<script>
-  function openModal() {
-    document.getElementById('contactModal').style.display = 'block';
-  }
-
-  function closeModal() {
-    document.getElementById('contactModal').style.display = 'none';
-  }
-
-  // Close modal if user clicks outside
-  window.onclick = function(event) {
-    const modal = document.getElementById('contactModal');
-    if (event.target == modal) {
-      modal.style.display = 'none';
-    }
-  }
-
-  // Attach the click handler to the button
-  document.querySelector('.buy-now').addEventListener('click', openModal);
-</script>
-
-</body>
-</html>
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Contact Seller</h2>
+      <p>You can reach the seller at:</p>
+      <p><strong>📞 0912 345 6789</strong></p>
+      <p><strong>🛖 Baliawsan Grande Zamboanga City</strong></p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247

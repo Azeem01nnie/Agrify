@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../Config/database.php';
 require_once 'MarketplaceManager.php';
 
@@ -132,24 +133,27 @@ try {
                   'horses' => 'images/horse.png'
               ];
               $imagePath = $defaultImages[$type] ?? 'images/default-animal.png';
+              $animalId = htmlspecialchars($animal['animal_id'] ?? 0);
             ?>
-            <div class="card" data-animal-type="<?php echo htmlspecialchars($animal['animal_type'] ?? ''); ?>">
-              <img src="<?php echo htmlspecialchars($imagePath); ?>"
-                  alt="<?php echo htmlspecialchars($animal['animal_type'] ?? 'Animal'); ?>"
-                  onerror="this.src='images/default-animal.png'">
-              <div class="card-content">
-                <div class="card-title"><?php echo htmlspecialchars($animal['animal_type'] ?? 'Unnamed Animal'); ?></div>
-                 <div class="card-owner">
-                  Owner: <?php echo htmlspecialchars($animal['owner_name'] ?? 'Anonymous'); ?>
+            <a href="animaldescription.php?id=<?php echo $animalId; ?>" class="card-link" style="text-decoration: none; color: inherit;">
+              <div class="card" id="animal-<?php echo $animalId; ?>" data-animal-type="<?php echo htmlspecialchars($animal['animal_type'] ?? ''); ?>">
+                <img src="<?php echo htmlspecialchars($imagePath); ?>"
+                    alt="<?php echo htmlspecialchars($animal['animal_type'] ?? 'Animal'); ?>"
+                    onerror="this.src='images/default-animal.png'">
+                <div class="card-content">
+                  <div class="card-title"><?php echo htmlspecialchars($animal['animal_type'] ?? 'Unnamed Animal'); ?></div>
+                  <div class="card-owner">
+                    Owner: <?php echo htmlspecialchars($animal['owner_name'] ?? 'Anonymous'); ?>
+                  </div>
+                  <div class="card-info">
+                    <p>Date of Birth: <?php echo htmlspecialchars($animal['date_of_birth'] ?? 'Unknown'); ?></p>
+                    <p>Cage: <?php echo htmlspecialchars($animal['cage_name'] ?? 'Unassigned'); ?></p>
+                  </div>
                 </div>
-                <div class="card-info">
-                  <p>Date of Birth: <?php echo htmlspecialchars($animal['date_of_birth'] ?? 'Unknown'); ?></p>
-                  <p>Cage: <?php echo htmlspecialchars($animal['cage_name'] ?? 'Unassigned'); ?></p>
-                </div>
-               
               </div>
-            </div>
+            </a>
           <?php endforeach; ?>
+
         <?php endif; ?>
       </div>
     </main>
