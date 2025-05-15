@@ -222,12 +222,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         profileImg.src = profileImg.src.split('?')[0] + '?t=' + new Date().getTime();
                     } else {
                         alert("Failed to upload image: " + result);
-                    }
-                })
-                .catch(() => {
-                    alert("Error uploading image.");
-                });
-            }
+                    }   
+                }).then(() => location.reload());
+                
+            } 
         });
     }
 });
