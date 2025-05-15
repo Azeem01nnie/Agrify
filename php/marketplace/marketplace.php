@@ -111,11 +111,16 @@ try {
             <?php
               $type = strtolower(trim($animal['animal_type'] ?? ''));
               $defaultImages = [
-                  'goats' => '/agrify/php/marketplace/images/goat.png',
-                  'cows' => '/agrify/php/marketplace/images/cow.png',
-                  'chickens' => '/agrify/php/marketplace/images/chicken.png',
-                  'ducks' => '/agrify/php/marketplace/images/duck.png',
-                  'horse' => '/agrify/php/marketplace/images/horse.png',
+                  'goat' => 'images/goat.png',
+                  'cow' => 'images/cow.png',
+                  'chicken' => 'images/chicken.png',
+                  'duck' => 'images/duck.png',
+                  'horse' => 'images/horse.png',
+                  'goats' => 'images/goat.png',
+                  'cows' => 'images/cow.png',
+                  'chickens' => 'images/chicken.png',
+                  'ducks' => 'images/duck.png',
+                  'horses' => 'images/horse.png'
               ];
               $imagePath = $defaultImages[$type] ?? 'images/default-animal.png';
             ?>
