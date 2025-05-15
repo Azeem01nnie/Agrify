@@ -95,9 +95,8 @@ body {
 
 .topbar {
     background-color: #40513B;
-    padding: 1rem 3rem 1rem 5rem;
+    padding: 1rem 3rem 1rem 1rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     color: #ffffff;
     position: sticky;
@@ -197,6 +196,7 @@ body {
 .logout {
     padding: 10px 15px;
     border-radius: 5px;
+    margin-right: 75%;
 }
 
 .logout button {
