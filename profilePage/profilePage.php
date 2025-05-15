@@ -49,7 +49,7 @@ session_start();
         <img src="/agrify/icons/cages.png" alt="Cages">
         Cages
       </a>
-      <a href="/agrify/profilePage/profilePage.php" class="active">
+      <a href="/agrify/profilePage/profilePage.php">
         <img src="/agrify/icons/setting.png" alt="Settings">
         Settings
       </a>

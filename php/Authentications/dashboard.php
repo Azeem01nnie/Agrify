@@ -70,7 +70,7 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
                     echo "Guest";
                 }?> | Admin</p>
         <div class="menu">
-            <a href="/agrify/php/Authentications/dashboard.php" class="active">
+            <a href="/agrify/php/Authentications/dashboard.php">
                 <img src="/agrify/icons/dashboard_vector.svg" alt="Dashboard">
                 Dashboard
             </a>
