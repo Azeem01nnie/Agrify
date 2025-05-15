@@ -30,6 +30,15 @@ body {
   color: white;
 }
 
+.logsig {
+  margin-left: 720px;
+}
+
+.logsig a {
+  border-radius: 4px;
+  text-decoration: none;
+}
+
 .lugu {
   border-radius: 10px;
 }

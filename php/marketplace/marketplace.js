@@ -30,7 +30,7 @@ function renderCards() {
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
-        <a href="sectioning.html" class="sectioning"><img src="${mode.image}" alt="${mode.class}">
+        <a href="../marketplace/animaldescription.html" class="sectioning"><img src="${mode.image}" alt="${mode.class}">
         <h3>${mode.class}</h3></a>
         <p class="price">${mode.price}</p>
       `;
