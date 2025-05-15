@@ -112,20 +112,20 @@ session_start();
       <div class="profile-card">
         <div class="left">
 <?php
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
-$img_path = "../addanimals/profile.png"; // fallback
+  $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+  $img_path = "../addanimals/profile.png"; // fallback
 
-// Point to uploads folder outside profilePage
-$upload_dir = dirname(__DIR__) . '/uploads/';
-$web_upload_dir = "../uploads/";
+  // Point to uploads folder outside profilePage
+  $upload_dir = dirname(__DIR__) . '/uploads/';
+  $web_upload_dir = "../uploads/";
 
-foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
-    $candidate = $upload_dir . "user_$user_id.$ext";
-    if (file_exists($candidate)) {
-        $img_path = $web_upload_dir . "user_$user_id.$ext";
-        break;
-    }
-}
+  foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
+      $candidate = $upload_dir . "user_$user_id.$ext";
+      if (file_exists($candidate)) {
+          $img_path = $web_upload_dir . "user_$user_id.$ext";
+          break;
+      }
+  }
 ?>
           <img src="<?php echo htmlspecialchars($img_path); ?>" alt="User Photo" class="profile-img" id="profileImg" />
           <input type="file" id="profileImageInput" style="display:none;" accept="image/*">

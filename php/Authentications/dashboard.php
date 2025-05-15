@@ -12,6 +12,22 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 $cageManager = new DashboardCageManager($pdo);
 $cageStats = $cageManager->getTopCagesWithAnimals($userId);
+
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+$img_path = "../../icons/profile 1.svg"; // fallback
+
+// Point to uploads folder outside 
+$upload_dir = dirname(__DIR__, 2) . '/uploads/';  // correct file path on disk
+$web_upload_dir = "/agrify/uploads/";             // correct URL for browser
+
+
+foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
+    $candidate = $upload_dir . "user_$user_id.$ext";
+        if (file_exists($candidate)) {
+            $img_path = $web_upload_dir . "user_$user_id.$ext";
+            break;
+        }
+    }  
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +136,7 @@ $cageStats = $cageManager->getTopCagesWithAnimals($userId);
         <div class="content">
             <div class="welcome-section">
                 <div class="profile-welcome">
-                    <img src="/agrify/icons/Profile 1.svg" alt="Profile">
+                    <img src="<?php echo htmlspecialchars($img_path); ?>" alt="User Photo" class="profile-img" id="profileImg" />
                     <div class="welcome-text">
                         <h1>Hello, <?php 
                 if (isset($_SESSION['username'])) {
