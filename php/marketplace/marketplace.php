@@ -26,8 +26,12 @@ try {
       border-radius: 8px;
       padding: 15px;
       margin: 10px;
+      width: 200px;
+      height:400px;
       background: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      
+      
     }
     .card img {
       width: 100%;
@@ -37,20 +41,25 @@ try {
     }
     .card-content {
       margin-top: 10px;
+      border: 1px solid whitesmoke;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .card-title {
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 5px;
+      padding-bottom: 10px;
     }
     .card-info {
       color: #666;
       font-size: 0.9em;
+      
     }
     .card-owner {
-      margin-top: 10px;
       font-style: italic;
       color: #888;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
     .card-grid {
       display: grid;
@@ -130,13 +139,14 @@ try {
                   onerror="this.src='images/default-animal.png'">
               <div class="card-content">
                 <div class="card-title"><?php echo htmlspecialchars($animal['animal_type'] ?? 'Unnamed Animal'); ?></div>
+                 <div class="card-owner">
+                  Owner: <?php echo htmlspecialchars($animal['owner_name'] ?? 'Anonymous'); ?>
+                </div>
                 <div class="card-info">
                   <p>Date of Birth: <?php echo htmlspecialchars($animal['date_of_birth'] ?? 'Unknown'); ?></p>
                   <p>Cage: <?php echo htmlspecialchars($animal['cage_name'] ?? 'Unassigned'); ?></p>
                 </div>
-                <div class="card-owner">
-                  Owner: <?php echo htmlspecialchars($animal['owner_name'] ?? 'Anonymous'); ?>
-                </div>
+               
               </div>
             </div>
           <?php endforeach; ?>
