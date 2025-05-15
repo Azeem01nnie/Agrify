@@ -13,7 +13,7 @@
       <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
       <a href="#">Marketplace</a>
-      <a href="#">Livestock Food</a>
+      <a href="#">Livestock Feed</a>
       <a href="#">Settings</a>
       <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
       </div>
