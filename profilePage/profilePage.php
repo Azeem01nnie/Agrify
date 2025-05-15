@@ -28,9 +28,9 @@ session_start();
 </head>
 <body>
   <div class="sidebar" id="sidebar">
-    <div class="logo-container">
-      <img src="/agrify/icons/logo.svg" alt="Library Logo">
-    </div>
+      <div class="logo-container">
+        <img src="/agrify/php/marketplace/baka.png" alt="Library Logo">
+      </div>
     <p class="username">
       <?php 
         if (isset($_SESSION['username'])) {

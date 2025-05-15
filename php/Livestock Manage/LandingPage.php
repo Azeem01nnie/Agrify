@@ -51,7 +51,7 @@
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-green-800">Buy & Sell Livestock with Ease</h2>
       <p class="text-xl mb-8 text-gray-700">Agrify is your trusted marketplace for farm animals — connecting buyers and sellers across the country.</p>
-      <a href="/agrify/php/Livestock%20Manage/newlogin.php" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg hover:bg-green-800 transition">Browse Marketplace</a>
+      <a href="/agrify/php/marketplace/marketplace.php" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg hover:bg-green-800 transition">Browse Marketplace</a>
     </div>
   </section>
 
