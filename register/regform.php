@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $pdo->commit();
 
-                    header("Location:/agrify/php/Authentications/login.php");
+                    header("Location:/agrify/php/Livestock%20Manage/newlogin.php");
                     exit;
                 } catch (PDOException $e) {
                     $pdo->rollBack();
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Welcome to AGRIFY</h1>
-        <a href="/agrify/php/Authentications/login.php" class="back-arrow">&larr;</a>
+        <a href="/agrify/php/Livestock%20Manage/newlogin.php" class="back-arrow">&larr;</a>
 
         <?php if ($error): ?>
             <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>

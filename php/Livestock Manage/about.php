@@ -22,7 +22,7 @@
     <nav id="navMenu" class="nav-links">
       <ul>
         <li><a href="LandingPage.php">Home</a></li>
-        <li><a href="newlogin.php">Marketplace</a></li>
+        <li><a href="/agrify/php/marketplace/marketplace.php">Marketplace</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact</a></li>
       </ul>
