@@ -76,8 +76,8 @@ try {
       <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
         <a href="#">Marketplace</a>
-        <a href="/php/Livestock%20Manage/LandingPage.php">Livestock Food</a>
-        <a href="/php/Livestock%20Manage/LandingPage.php">Home</a>
+        <a href="/php/Livestock Manage/LandingPage.php">Livestock Food</a>
+        <a href="/php/Livestock Manage/LandingPage.php">Home</a>
         <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
       </div>
     </div>
@@ -97,7 +97,6 @@ try {
           <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 3" /></div>
           <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/whales.png" alt="Ad 2" /></div>
           <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/sale.png" alt="Ad 2" /></div>
-          <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/BESTBUY.png" alt="Ad 3" /></div>
         </div>
       </div>
 
