@@ -75,7 +75,7 @@
     <h3 class="text-3xl font-bold mb-12">Meet the Team</h3>
     <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-4">
       <div>
-        <img src="/agrify/php/Livestock Manage/iconss/profile1.jpg" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <img src="/agrify/php/Livestock Manage/iconss/jlprofile.png" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">John Lloyd Climaco</h4>
         <p class="text-gray-600">Backend Developer</p>
       </div>
