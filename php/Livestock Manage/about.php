@@ -90,9 +90,11 @@
         <p class="text-gray-600">UX Designer</p>
       </div>
       <div>
-        <img src="/agrify/php/Livestock Manage/iconss/profile2.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
-        <h4 class="text-xl font-semibold">Dharelle Ebol</h4>
-        <p class="text-gray-600">Frontend Developer</p>
+        <a href="https://dharwebportfolio.infinityfreeapp.com/">
+          <img src="/agrify/php/Livestock Manage/iconss/profile2.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+          <h4 class="text-xl font-semibold">Dharelle Ebol</h4>
+          <p class="text-gray-600">Frontend Developer</p>
+        </a>
       </div>
       <div>
         <img src="/agrify/php/Livestock Manage/iconss/profile3.jpg" alt="Justin James Alviar" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
