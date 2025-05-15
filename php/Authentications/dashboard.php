@@ -92,46 +92,37 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
 
     <div class="main-content">
             <div class="topbar">
-            <div class="user-info">
-                <img src="/agrify/icons/Profile.svg" alt="Profile">
-                <div class="user-details">
-                    <div class="user-name"><?php 
-                if (isset($_SESSION['username'])) {
-                    echo htmlspecialchars($_SESSION['username']);
-                } else {
-                    echo "Guest";
-                }?></div>
-                    <div class="user-role">Admin</div>
-                </div>
-            </div>
-
-            <div class="logout">
-                <button class="menu-button">
-                    <img src="/agrify/icons/cages.png" alt="AddCage">
-                    <span> Add Cage</span>
-                </button>
-            </div>
-
-            <div class="logout">
-                <button class="menu-button">
-                    <img src="/agrify/icons/logout.svg" alt="Menu">
-                </button>
-                <div class="dropdown-menu">
-                    <div class="menu-item">
-                        <img src="/agrify/icons/Profile (2).svg" alt="Profile">
-                        <span>Profile</span>
-                    </div>
-                    <div class="menu-item">
-                        <img src="/agrify/icons/languageicon.svg" alt="Language">
-                        <span>Language</span>
-                    </div>
-                    <div class="menu-item logout-option">
-                        <img src="/agrify/icons/logout.svg" alt="Log Out">
-                        <span>Log Out</span>
-                    </div>
-                </div>
-            </div>
+      <div class="user-info">
+        <img src="/agrify/icons/Profile.svg" alt="Profile">
+        <div class="user-details">
+          <div class="user-name">
+            <?php 
+              if (isset($_SESSION['username'])) {
+                echo htmlspecialchars($_SESSION['username']);
+              } else {
+                echo "Guest";
+              }
+            ?>
+          </div>
+          <div class="user-role">Admin</div>
         </div>
+      </div>
+      <div class="logout">
+        <button class="menu-button">
+          <img src="/agrify/icons/logout.svg" alt="Menu">
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-item">
+            <img src="/agrify/icons/Profile.svg" alt="Profile">
+            <span>Profile</span>
+          </div>
+          <div class="menu-item logout-option">
+            <img src="/agrify/icons/logout.svg" alt="Log Out">
+            <span>Logout</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
         <div class="content">
             <div class="welcome-section">
