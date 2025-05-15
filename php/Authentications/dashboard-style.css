@@ -225,6 +225,7 @@ body {
     margin: 10px 0;
     font-weight: bold;
     line-height: 40px;
+    
 }
 
 .progress span {
@@ -277,6 +278,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     padding: 2rem;
+    
 }
 .stock{
     background-color: var(--white);
@@ -345,9 +347,16 @@ body {
     color: #4CAF50;
     font-weight: bold;
 }
+.expect p > input{
+   border-style: none;
+   height: 50px;
+   width: 200px;
+   font-size: 20px;
+}
 .expect strong{
     color:black;
     font-size: 20px;
+    font-weight: bold;
 }
 .circular-progress-78 {
     position: relative;

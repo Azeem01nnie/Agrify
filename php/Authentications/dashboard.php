@@ -206,10 +206,12 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
                     
                       
                 <div class="expect">
-                    <div class="input-section">
+                    <div class="expect">
+                        <p>
                             <label for="currentProfit">Enter Current Profit: </label>
                             <input type="number" id="currentProfit" placeholder="Enter amount" />
                             <button onclick="updateChart()">Update Chart</button>
+                        </p> 
                     </div>
                         
                     <div class="expect">
@@ -300,7 +302,7 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
             }]
         },
         options: {
-            cutout: '80%', // Use this instead of cutoutPercentage in Chart.js 3+
+            cutoutPercentage: 80, // Use this instead of cutoutPercentage in Chart.js 3+
             responsive: true,
             plugins: {
                 legend: {
@@ -330,7 +332,7 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
         profitChart.data.datasets[0].data = [percentageAchieved, 100 - percentageAchieved];
         profitChart.update();
 
-        // Update text inside the doughnut
+        
         document.getElementById('percentage').innerText = percentageAchieved.toFixed(2) + '%';
     }
 </script>
