@@ -65,10 +65,17 @@ try {
     <div class="brand">
       <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
+<<<<<<< HEAD
+      <a href="#">Marketplace</a>
+      <a href="#">Livestock Feed</a>
+      <a href="#">Settings</a>
+      <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
+=======
         <a href="#">Marketplace</a>
         <a href="#">Livestock Food</a>
         <a href="#">Settings</a>
         <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
+>>>>>>> b3f3473e3429902b7b8e182f91fd837e4e9caea0
       </div>
     </div>
   </div>
