@@ -75,9 +75,9 @@ try {
     <div class="brand">
       <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
-        <a href="#">Marketplace</a>
-        <a href="/php/Livestock Manage/LandingPage.php">Livestock Food</a>
-        <a href="/php/Livestock Manage/LandingPage.php">Home</a>
+        <a href="/agrify/php/marketplace/marketplace.php">Marketplace</a>
+        <a href="/agrify/php/marketplace/feed.html">Livestock Food</a>
+        <a href="/agrify/php/Livestock Manage/LandingPage.php">Home</a>
         <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
       </div>
     </div>
