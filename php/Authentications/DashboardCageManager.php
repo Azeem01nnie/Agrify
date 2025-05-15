@@ -15,7 +15,6 @@ class DashboardCageManager {
      */
     public function getTopCagesWithAnimals($userId) {
         try {
-            // Query to get top 4 cages with their animal counts
             $query = "SELECT c.cage_id, c.cage_name, COUNT(a.animal_id) as animal_count 
                      FROM cages c 
                      LEFT JOIN animals a ON c.cage_id = a.cage_id 
