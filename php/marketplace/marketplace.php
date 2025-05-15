@@ -111,11 +111,11 @@ try {
             <?php
               $type = strtolower(trim($animal['animal_type'] ?? ''));
               $defaultImages = [
-                  'Goats' => '/agrify/php/marketplace/images/goat.png',
-                  'Cows' => '/agrify/php/marketplace/images/cow.png',
-                  'Chickens' => '/agrify/php/marketplace/images/chicken.png',
-                  'Ducks' => '/agrify/php/marketplace/images/duck.png',
-                  'Horse' => '/agrify/php/marketplace/images/horse.png',
+                  'goats' => '/agrify/php/marketplace/images/goat.png',
+                  'cows' => '/agrify/php/marketplace/images/cow.png',
+                  'chickens' => '/agrify/php/marketplace/images/chicken.png',
+                  'ducks' => '/agrify/php/marketplace/images/duck.png',
+                  'horse' => '/agrify/php/marketplace/images/horse.png',
               ];
               $imagePath = $defaultImages[$type] ?? 'images/default-animal.png';
             ?>
@@ -141,12 +141,10 @@ try {
   </div>
 
   <script>
-    // Prevent form submission
     document.getElementById('searchForm').addEventListener('submit', function(e) {
       e.preventDefault();
     });
 
-    // Search functionality
     document.getElementById('searchInput').addEventListener('input', function(e) {
       const searchTerm = e.target.value.toLowerCase();
       const cards = document.querySelectorAll('.card');
@@ -164,7 +162,6 @@ try {
       });
     });
 
-    // Filter functionality
     document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(checkbox => {
       checkbox.addEventListener('change', function() {
         const checkedTypes = Array.from(document.querySelectorAll('.filter-group input[type="checkbox"]:checked'))
@@ -181,5 +178,6 @@ try {
       });
     });
   </script>
+
 </body>
 </html>
