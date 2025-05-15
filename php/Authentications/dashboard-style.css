@@ -207,22 +207,6 @@ body {
     color: white;
 }
 
-
-.cages {
-  
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.cage {
-    border: 1px solid black;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: center;
-    flex: 1;
-}
-
 .livestock {
     width: 100%;
     max-width: 400px;
@@ -278,31 +262,22 @@ body {
 
 
 .chart-section {
-    margin-top: 20px;
-    border: 1px solid black;
-    padding:20px
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
 }
 .finance{
-    border: 1px;
-    border-color: black;
-    border-style: double;
-    width: 670px;
-    height: 300px;
-    display: flex;
-    padding: 20px;
-    border-radius: 5px;
-  
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
 }
 .stock{
-    border: 1px;
-    display: flex;
-    border-color: black;
-    border-style: double;
-    width: 355px;
-    height: 300px;
-    border-radius: 5px;
-    padding: 20px;
-    
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
 }
 
 .cont{
@@ -312,9 +287,10 @@ body {
     justify-content: center;
 }
 .finance p{
-    border: 1px solid black;
-    padding: 10px;
-    margin: 20px;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
 }
 
 .flex{

@@ -151,7 +151,6 @@
             </div>
 
             <div class="dashboard-grid">
-            <div class="cont">
             <div class="stock">
                 <section class="livestock">
                     <h2>Livestock Details</h2>
