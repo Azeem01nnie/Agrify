@@ -107,20 +107,11 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
           <div class="user-role">Admin</div>
         </div>
       </div>
+      
       <div class="logout">
         <button class="menu-button">
           <img src="/agrify/icons/logout.svg" alt="Menu">
         </button>
-        <div class="dropdown-menu">
-          <div class="menu-item">
-            <img src="/agrify/icons/Profile.svg" alt="Profile">
-            <span>Profile</span>
-          </div>
-          <div class="menu-item logout-option">
-            <img src="/agrify/icons/logout.svg" alt="Log Out">
-            <span>Logout</span>
-          </div>
-        </div>
       </div>
     </div>
 

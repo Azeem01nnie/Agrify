@@ -9,6 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profile Page</title>
   <link rel="stylesheet" href="profileStyle.css" />
+  <link rel="stylesheet" href="/agrify/php/Authentications/modalstyle.css">
   <style>
     .sidebar {
       width: 250px;
@@ -78,20 +79,11 @@ session_start();
           <div class="user-role">Admin</div>
         </div>
       </div>
+
       <div class="logout">
         <button class="menu-button">
           <img src="/agrify/icons/logout.svg" alt="Menu">
         </button>
-        <div class="dropdown-menu">
-          <div class="menu-item">
-            <img src="/agrify/icons/Profile.svg" alt="Profile">
-            <span>Profile</span>
-          </div>
-          <div class="menu-item logout-option">
-            <img src="/agrify/icons/logout.svg" alt="Log Out">
-            <span>Logout</span>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -176,6 +168,23 @@ session_start();
     </div>
   </div>
 
+  <div id="logoutModal" class="viewmodal" role="dialog" aria-modal="true" tabindex="-1">
+          <div class="modal-content2">
+              <img src="/agrify/icons/warning_vector.svg" class="modal-logo">
+              <div class="modal-header">
+                  <h2>Logout Confirmation</h2>
+              </div>
+              <div class="modal-body">
+                  <p>Are you sure you want to log out?</p>
+              </div>
+              <div class="modal-actions">
+                  <button class="modalbtn proceed" id="confirmLogout">Yes</button>
+                  <button class="modalbtn close">No</button>
+              </div>
+          </div>
+      </div>
+
+  <script src="/agrify/php/Authentications/modals.js"></script>
   <script src="ProfileScript.js"></script>
 </body>
 </html>

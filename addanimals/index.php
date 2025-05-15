@@ -10,6 +10,7 @@ require_once '../php/Config/database.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agrify Dashboard</title>
   <link rel="stylesheet" href="add-style.css" />
+  <link rel="stylesheet" href="/agrify/php/Authentications/modalstyle.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <style>
@@ -81,16 +82,6 @@ require_once '../php/Config/database.php';
                 <button class="menu-button">
                     <img src="/agrify/icons/logout.svg" alt="Menu">
                 </button>
-                <div class="dropdown-menu">
-                    <div class="menu-item">
-                        <img src="/agrify/icons/Profile.svg" alt="Profile">
-                        <span>Profile</span>
-                    </div>
-                    <div class="menu-item logout-option">
-                        <img src="/agrify/icons/logout.svg" alt="Log Out">
-                        <span>Log Out</span>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -146,6 +137,23 @@ require_once '../php/Config/database.php';
   </div>
 </div>
 
+  <div id="logoutModal" class="viewmodal" role="dialog" aria-modal="true" tabindex="-1">
+          <div class="modal-content2">
+              <img src="/agrify/icons/warning_vector.svg" class="modal-logo">
+              <div class="modal-header">
+                  <h2>Logout Confirmation</h2>
+              </div>
+              <div class="modal-body">
+                  <p>Are you sure you want to log out?</p>
+              </div>
+              <div class="modal-actions">
+                  <button class="modalbtn proceed" id="confirmLogout">Yes</button>
+                  <button class="modalbtn close">No</button>
+              </div>
+          </div>
+      </div>
+
+  <script src="/agrify/php/Authentications/modals.js"></script>
   <script src="add-script.js"></script>
 </body>
 </html>
