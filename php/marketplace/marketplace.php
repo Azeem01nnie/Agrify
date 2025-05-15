@@ -13,12 +13,9 @@
       <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
       <a href="#">Marketplace</a>
-      <a href="#">Cage</a>
+      <a href="#">Livestock Food</a>
       <a href="#">Settings</a>
-      <a href="#">Logout</a>
-      <div class="logsig">
-      <a href=".com">Login</a>
-      <a href=".com">Signup</a>
+      <a href="/agrify/php/Livestock%20Manage/newlogin.php">Login</a>
       </div>
     </div>
     </div>
@@ -28,12 +25,12 @@
     <main class="market">
 <div class="carousel-container">
   <div class="carousel-track">
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 1" /></div>
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/whales.png" alt="Ad 2" /></div>
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/BESTBUY.png" alt="Ad 3" /></div>
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 1" /></div>
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/sale.png" alt="Ad 2" /></div>
-    <div class="carousel-item"><img src="/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 3" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 1" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/whales.png" alt="Ad 2" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/BESTBUY.png" alt="Ad 3" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 1" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/sale.png" alt="Ad 2" /></div>
+    <div class="carousel-item"><img src="/agrify/php/Livestock Manage/iconss/DIARIES.png" alt="Ad 3" /></div>
   </div>
 </div>
       <div class="top-bar">
