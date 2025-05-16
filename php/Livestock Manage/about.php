@@ -75,14 +75,18 @@
     <h3 class="text-3xl font-bold mb-12">Meet the Team</h3>
     <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-4">
       <div>
-        <img src="/agrify/php/Livestock Manage/iconss/jlprofile.png" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
-        <h4 class="text-xl font-semibold">John Lloyd Climaco</h4>
-        <p class="text-gray-600">Backend Developer</p>
+        <a href="http://tantaloss.elementfx.com/">
+          <img src="/agrify/php/Livestock Manage/iconss/jlprofile.png" alt="John Lloyd Climaco" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+          <h4 class="text-xl font-semibold">John Lloyd Climaco</h4>
+          <p class="text-gray-600">Backend Developer</p>
+        </a>
       </div>
       <div>
-        <img src="/agrify/php/Livestock Manage/iconss/profile5.jpg" alt="Eric Libradilla jr" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
-        <h4 class="text-xl font-semibold">Eric Libradilla jr</h4>
-        <p class="text-gray-600">Frontend Developer</p>
+        <a href="http://ericportfolio12.x10.mx/">
+          <img src="/agrify/php/Livestock Manage/iconss/profile5.jpg" alt="Eric Libradilla jr" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+          <h4 class="text-xl font-semibold">Eric Libradilla jr</h4>
+          <p class="text-gray-600">Frontend Developer</p>
+        </a>
       </div>
       <div>
         <img src="/agrify/php/Livestock Manage/iconss/profile4.jpg" alt="Mohammad Azeem Abdu" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
