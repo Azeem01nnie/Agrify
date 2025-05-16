@@ -95,7 +95,7 @@
       </div>
       <div>
         <a href="https://dharwebportfolio.infinityfreeapp.com/">
-          <img src="/agrify/php/Livestock Manage/iconss/profile2.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+          <img src="/agrify/php/Livestock Manage/iconss/dharProfile.jpg" alt="Dharelle Ebol" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
           <h4 class="text-xl font-semibold">Dharelle Ebol</h4>
           <p class="text-gray-600">Frontend Developer</p>
         </a>
