@@ -179,7 +179,7 @@ foreach (['jpg', 'jpeg', 'png', 'gif'] as $ext) {
                 <h2>Financial Statistics</h2>
                 <div class="flex">
                     <div class="circular-progress-wrapper">
-                        <canvas id="profitChart"></canvas>
+                        <canvas id="profitChart" width="350px"></canvas>
                         <div class="progress-text-overlay">
                             <div class="label">Achieved</div>
                             <div id="percentage">0%</div>

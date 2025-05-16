@@ -73,7 +73,7 @@ try {
 <body>
   <div class="navbar">
     <div class="brand">
-      <a href="marketplace.css"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
+      <a href="/agrify/php/Livestock%20Manage/Landingpage.php"><img src="baka.png" alt="Agrify" width="60" height="60" class="lugu" /></a>
       <div class="nav-links">
         <a href="/agrify/php/marketplace/marketplace.php">Marketplace</a>
         <a href="/agrify/php/marketplace/feed.html">Livestock Food</a>
