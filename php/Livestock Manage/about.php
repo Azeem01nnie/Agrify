@@ -89,7 +89,8 @@
         </a>
       </div>
       <div>
-        <img src="http://meetazee.elementfx.com" alt="Mohammad Azeem Abdu" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
+        <a href="http://meetazee.elementfx.com">
+        <img src="/agrify/php/Livestock Manage/iconss/profile4.jpg" alt="Mohammad Azeem Abdu" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"/>
         <h4 class="text-xl font-semibold">Mohammad Azeem S. Abdu</h4>
         <p class="text-gray-600">UX Designer</p>
       </div>
