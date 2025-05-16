@@ -24,6 +24,52 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agrify</title>
   <link rel="stylesheet" href="description.css">
+  <style>
+    /* Contact Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+
+    iframe {
+      margin-top: 10px;
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -68,6 +114,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             ?>
         <img src="<?php echo htmlspecialchars($imagePath); ?>"
                     alt="<?php echo htmlspecialchars($animal['animal_type'] ?? 'Animal'); ?>"
+
                     onerror="this.src='images/default-animal.png'">
       </div>
       <div class="product-details">
@@ -78,7 +125,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <div class="info"><strong>Breedable: </strong><?php echo $animal['breedable'] ? 'Yes' : 'No'; ?></div>
         <div class="info"><strong>Date of Birth: </strong><?php echo htmlspecialchars($animal['date_of_birth']); ?></div>
         <div class="buttons">
-          <button class="buy-now">📱 Contact</button>
+          <button class="buy-now" onclick="openModal()">📱 Contact</button>
         </div>
       </div>
     <?php else: ?>
@@ -93,5 +140,37 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       <h2>Contact Seller</h2>
       <p>You can reach the seller at:</p>
       <p><strong>📞 0912 345 6789</strong></p>
-      <p><strong>🛖 Baliawsan Grande Zamboanga City</strong></p>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247
+      <p><strong>🛖 Baliawsan Grande, Zamboanga City</strong></p>
+      
+      <!-- Google Maps Embed -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125397.1767106281!2d122.00000000000001!3d6.910278000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041bb9f5c4c65%3A0xa4206d0fc9e9aa6f!2sBaliwasan%20Grande%2C%20Zamboanga%2C%20Zamboanga%20Sibugay!5e0!3m2!1sen!2sph!4v1715856750000!5m2!1sen!2sph"
+        height="250"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- JavaScript for modal -->
+  <script>
+    function openModal() {
+      document.getElementById("contactModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("contactModal").style.display = "none";
+    }
+
+    // Close modal if user clicks outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById("contactModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
