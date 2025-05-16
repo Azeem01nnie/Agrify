@@ -1,7 +1,6 @@
 const animals = [
   { id: 1, description: 'Chickens', image: 'LivestockFeed/sarimanok.jpg', class: 'Sarimanok Chicken Booster' },
   { id: 2, description: 'Chickens', image: 'LivestockFeed/sarimanok.pLjpg.jpg', class: 'Sarimanok Pre - Lay' },
-  { id: 3, description: 'Goats', image: 'LivestockFeed/Hay.jpg', class: 'Hay Forage' },
   { id: 4, description: 'Chickens', image: 'LivestockFeed/sarimanokbs.jpg', class: 'Sarimanok Broiler Starter' },
   { id: 5, description: 'Chickens', image: 'LivestockFeed/sarimanok.pL1.jpg', class: 'Sarimanok Pre - Lay 2' },
   { id: 6, description: 'Chickens', image: 'LivestockFeed/broilerfinisher.png', class: 'Sariamnok Broiler Finisher' },
